@@ -42,6 +42,10 @@ label{display:block;margin:12px 0 5px;color:var(--muted)}.formInput{width:100%;p
 .infoGrid b{display:block;color:var(--gold);margin-bottom:4px}
 .infoGrid span{font-size:12px;color:var(--muted)}
 @media(max-width:600px){.infoGrid{grid-template-columns:1fr}}
+
+.productImg{width:100%;height:190px;object-fit:cover;border-radius:14px;display:block;margin-bottom:8px;border:1px solid #4e3d5c}
+.iconMini{font-size:25px;margin-bottom:4px}
+.detailImg{width:100%;max-height:320px;object-fit:cover;border-radius:16px;border:1px solid #80683e;display:block;margin-bottom:14px}
 </style>
 </head>
 <body>
@@ -135,6 +139,40 @@ const products=[
 ["Bezoar – حجر الترياق","🪨","حجر يستخدم كترياق لبعض السموم.","130"],
 ["مجموعة جرعات المبتدئين","⚗️","مرجل صغير وزجاجات وأدوات ومكونات أساسية.","180"],
 
+
+["جرعة Wiggenweld","🧪","جرعة علاجية شهيرة في عالم السحر، تُعرض كتذكار سحري.","105"],
+["جرعة Strengthening Solution","💪","جرعة تقوية سحرية من مقررات الجرعات.","110"],
+["جرعة Swelling Solution","🫧","جرعة تجعل الشيء ينتفخ في عالم السحر.","90"],
+["جرعة Shrinking Solution","🔮","جرعة عكسية مرتبطة بتقليص الأشياء.","90"],
+["جرعة Forgetfulness Potion","💭","جرعة مرتبطة بالنسيان في عالم السحر.","95"],
+["جرعة Invigoration","⚡","جرعة تذكارية مرتبطة باستعادة النشاط السحري.","100"],
+["Doxycide","🪰","مستحضر سحري يُستخدم للتعامل مع الدوكسيس في عالم السحر.","85"],
+["Shrivelfig Elixir","🌿","إكسير نباتي تذكاري من عالم الجرعات.","100"],
+["Potion of Hiccups","😵","جرعة طريفة مرتبطة بالحازوقة السحرية.","70"],
+["Cure for Boils","🫙","جرعة علاجية من دروس الجرعات المدرسية.","80"],
+["Fire-Protection Potion","🔥","جرعة تذكارية للحماية من تأثيرات النار في عالم السحر.","125"],
+["Dreamless Sleep Potion","🌙","جرعة مرتبطة بنوم هادئ بلا أحلام.","115"],
+["Confusing Concoction","🌀","خلطة سحرية تذكارية مرتبطة بالتشوش.","90"],
+["Strength Potion","🪨","جرعة تذكارية مرتبطة بزيادة القوة.","105"],
+["Antidote to Common Poisons","⚗️","ترياق عام لبعض السموم في عالم السحر.","120"],
+
+["The Monster Book of Monsters – الطبعة المدرسية","👹","نسخة إضافية من الكتاب الوحش المستخدم في دراسة المخلوقات.","145"],
+["The Heir of Slytherin – سجل الأساطير","🐍","كتاب تذكاري عن أساطير سليذرين وغرفة الأسرار.","100"],
+["Hogwarts: A History","🏰","مرجع تاريخي عن قلعة هوجورتس وتاريخها.","125"],
+["The Standard Book of Spells – الصف الثالث","📖","كتاب دراسي للتعويذات لطلاب السنوات المتقدمة.","85"],
+["The Standard Book of Spells – الصف الرابع","📖","جزء متقدم من سلسلة كتب التعويذات.","90"],
+["The Standard Book of Spells – الصف الخامس","📖","مرجع دراسي لمستوى أعلى من التعويذات.","95"],
+["The Standard Book of Spells – الصف السادس","📖","كتاب تعاويذ متقدم لطلاب هوجورتس.","100"],
+["The Standard Book of Spells – الصف السابع","📖","آخر أجزاء سلسلة الكتب الدراسية للتعويذات.","105"],
+["Numerology and Grammatica","🔢","مرجع تذكاري لمادة علم الأعداد السحرية.","95"],
+["Curses and Counter-Curses – نسخة موسعة","🛡️","مرجع عن اللعنات ووسائل مواجهتها.","110"],
+["The Dark Arts Outsmarted – طبعة نادرة","📕","طبعة تذكارية نادرة عن مقاومة السحر المظلم.","150"],
+["Magical Drafts and Potions","🧪","مرجع تذكاري للخلطات والجرعات السحرية.","115"],
+["The Encyclopedia of Magical Creatures","🐉","موسوعة كبيرة للمخلوقات السحرية.","160"],
+["A Beginner's Guide to Transfiguration","🦋","دليل تمهيدي لمادة التجلي والتحول.","90"],
+["Advanced Arithmancy","➗","مرجع متقدم لعلم الأعداد السحري.","130"],
+["The Dark Forces: A Guide to Self-Protection – طبعة نادرة","🛡️","طبعة تذكارية نادرة من مرجع الحماية.","140"],
+["The Life and Lies of Albus Dumbledore – الطبعة الكاملة","📔","طبعة تذكارية موسعة عن سيرة دمبلدور داخل عالم السلسلة.","150"],
 ["Nimbus 2000","🧹","مكنسة طيران رياضية شهيرة وسريعة.","450"],
 ["Nimbus 2001","🧹","نسخة مطورة من Nimbus 2000.","520"],
 ["Firebolt","🧹","مكنسة سباق فائقة السرعة.","900"],
@@ -246,7 +284,7 @@ let category="الكل", cart=[];
 function catOf(p){
  let n=p[0];
  if(n.includes("عصا")||n.includes("قلب التنين")||n.includes("ريشة العنقاء")||n.includes("شعر وحيد"))return"العصي";
- if(n.includes("جرعة")||n.includes("Potion")||n.includes("Serum")||n.includes("Antidote")||n.includes("Blood")||n.includes("Skele-Gro")||n.includes("Draught")||n.includes("Elixir")||n.includes("Veritaserum")||n.includes("Felix")||n.includes("Polyjuice")||n.includes("Wolfsbane")||n.includes("Bezoar")||n.includes("مرجل")||n.includes("مجموعة جرعات"))return"الجرعات";
+ if(n.includes("جرعة")||n.includes("Doxycide")||n.includes("Potion")||n.includes("Serum")||n.includes("Antidote")||n.includes("Blood")||n.includes("Skele-Gro")||n.includes("Draught")||n.includes("Elixir")||n.includes("Veritaserum")||n.includes("Felix")||n.includes("Polyjuice")||n.includes("Wolfsbane")||n.includes("Bezoar")||n.includes("مرجل")||n.includes("مجموعة جرعات"))return"الجرعات";
  if(n.includes("كتاب")||n.includes("Book")||n.includes("Life and Lies")||n.includes("Arts Outsmarted")||n.includes("Moste")||n.includes("Dream Oracle")||n.includes("Guide to Advanced")||n.includes("Essential Defence")||n.includes("A History")||n.includes("Fantastic")||n.includes("Standard")||n.includes("Advanced")||n.includes("One Thousand")||n.includes("Dark Forces")||n.includes("Curses")||n.includes("Monster Book")||n.includes("Quidditch")||n.includes("Tales"))return"الكتب";
  if(n.includes("مكنسة"))return"الطيران";
  if(["بومة","Pygmy","Niffler","Bowtruckle","Pixie","Fwooper","Diricawl","Mooncalf","Thestral","Hippogriff","Phoenix","Basilisk","Acromantula","Merpeople","Centaur","House-Elf","Goblin","Dragon","Fluffy","Aragog","Grawp","Buckbeak","Fang","Crookshanks","Trevor","Scabbers","Occamy","Demiguise","Erumpent","Graphorn","Swooping","Murtlap","Leprechaun","Kelpie","Salamander"].some(x=>n.includes(x)))return"المخلوقات";
@@ -267,9 +305,10 @@ let loggedIn=localStorage.getItem("wizardLoggedIn")==="1";
 let couponCode="";
 const STARTING_BALANCE=4000;
 let puzzleCoins=Number(localStorage.getItem("wizardPuzzleCoins")||0);
-let sudokuSolved=Number(localStorage.getItem("wizardSudokuSolved")||0);
+
 const puzzleQuestions=[{q:'أملك نصف دمبلدور تقريبًا من ذاكرته، وكنت سببًا في اكتشاف سر مهم عن فولدمورت. من أنا؟',a:'سلاغهورن',reward:180},{q:'أرتدي قبعة، وأقرر مصير الطلاب الأربعة، لكنني لست أستاذًا. من أنا؟',a:'قبعة الفرز',reward:120},{q:'أحمل اسمًا عائليًا شهيرًا، وأخشى أن يكتشف أحدهم أنني كنت في منزل مختلف عن عائلتي. من أنا؟',a:'سيريوس بلاك',reward:200},{q:'كنت أعيش في قفص داخل غرفة، وامتلكت موهبة تقليد الأصوات. من أنا؟',a:'بيتر بيتيجرو',reward:220},{q:'أملك مرآة تُظهر ما يتمناه القلب، لكنني لست المرآة نفسها. من أنا؟',a:'إيريسيد',reward:160},{q:'كنت أستاذ الدفاع، لكن اسمي الحقيقي أخطر من المنصب الذي شغلته. من أنا؟',a:'بارتي كراوتش الابن',reward:240},{q:'أملك عينًا سحرية، وأراقب كل شيء تقريبًا، لكنني لست دمبلدور. من أنا؟',a:'ماد آي مودي',reward:180},{q:'أعيش في الغابة، وأعرف لغة النجوم، وأراني بين البشر أحيانًا. من أنا؟',a:'سنتور',reward:140},{q:'كنت أستاذًا محبوبًا، لكنني لم أكن بشريًا بالكامل. من أنا؟',a:'ريموس لوبين',reward:170},{q:'أملك متجرًا في زقاق دياجون، وأحب الأشياء الغريبة، من أنا؟',a:'فريد وجورج',reward:160},{q:'أنا أصغر إخوة ويزلي في البداية، لكنني أصبحت ساحرًا مشهورًا. من أنا؟',a:'رون ويزلي',reward:130},{q:'أستطيع التحول إلى قطة، وأدرّس التجلي، من أنا؟',a:'مينيرفا ماكغوناغال',reward:150},{q:'أملك شعرًا أحمر، لكنني لست ويزلي، وكنت صديقة هيرميون. من أنا؟',a:'ليلي بوتر',reward:190},{q:'كنت حارسًا لمفتاح مهم، وكنت أحب التنانين، من أنا؟',a:'هاجريد',reward:130},{q:'أحرس بابًا، لكنني لست حارسًا بشريًا، ولي ثلاثة رؤوس. من أنا؟',a:'فلافّي',reward:140},{q:'أملك غرفة مليئة بالأشباح، لكنني لست شبحًا. من أنا؟',a:'البارون الدموي',reward:200},{q:'كنت شبحًا، وأكره أن يلاحظ الناس أنني بلا رأس كامل. من أنا؟',a:'نيك شبه مقطوع الرأس',reward:160},{q:'أعيش في حمام البنات وأبكي كثيرًا، من أنا؟',a:'مِرتل الناقمة',reward:140},{q:'أملك غرفة سرية تحت القلعة، وورثت اسم مؤسسها. من أنا؟',a:'سليذرين',reward:180},{q:'كنت أعيش داخل يوميات، لكنني لم أكن مجرد ذكرى. من أنا؟',a:'توم ريدل',reward:220},{q:'أملك ثعبانًا عملاقًا، وفتحت غرفة الأسرار، من أنا؟',a:'توم ريدل',reward:220},{q:'كنت أبحث عن حجر يجعلني خالدًا، من أنا؟',a:'نيكولاس فلاميل',reward:180},{q:'أملك ثلاثة أقداس، لكنني لم أصنعها كلها. من أنا؟',a:'الأخ الأكبر في حكاية الأقداس',reward:200},{q:'أحمل عصا من البلسان، لكنني لم أكن أول من امتلكها. من أنا؟',a:'دمبلدور',reward:190},{q:'أمتلك وشاحًا، وأستطيع تغيير شكلي، وكنت أعيش في الحرب الأولى. من أنا؟',a:'نيمفادورا تونكس',reward:180},{q:'أكره اسم عائلتي، وأصبحت من أتباع فولدمورت ثم ندمت. من أنا؟',a:'دراكو مالفوي',reward:180},{q:'كنت أعمل في وزارة السحر، وكنت والدًا لشخص خطير. من أنا؟',a:'بارتي كراوتش الأب',reward:220},{q:'أعيش مع عائلة غير سحرية، لكنني ساحرة موهوبة جدًا. من أنا؟',a:'هيرميون جرانجر',reward:130},{q:'كنت أملك فأرًا، لكن الفأر لم يكن فأرًا حقًا. من أنا؟',a:'رون ويزلي',reward:150},{q:'كنت أختبئ في هيئة فأر لسنوات. من أنا؟',a:'بيتر بيتيجرو',reward:220},{q:'أملك قطًا ذكيًا اسمه كروكشانك، وكنت أستعين بالكتب في كل شيء. من أنا؟',a:'هيرميون جرانجر',reward:150},{q:'كنت مديرًا لهوجورتس قبل دمبلدور، وظهر اسمي في تاريخ المدرسة. من أنا؟',a:'أرمندو ديبيت',reward:250},{q:'أعيش في البحيرة، ولدي شعب خاص بي. من أنا؟',a:'حورية البحر',reward:140},{q:'كنت أستاذ تاريخ السحر، وأستمر في التدريس حتى بعد موتي. من أنا؟',a:'كتبرت بينز',reward:200},{q:'أملك موهبة التنبؤ، لكنني أبدو غريبة جدًا للطلاب. من أنا؟',a:'سيبيل تريلاوني',reward:150},{q:'قلت نبوءة غيّرت حياة هاري، من أنا؟',a:'سيبيل تريلاوني',reward:180},{q:'أملك عينًا تستطيع رؤية ما لا يراه الآخرون، من أنا؟',a:'ماد آي مودي',reward:170},{q:'كتبت كتبًا عن المخلوقات السحرية، ورحلت حول العالم لدراستها. من أنا؟',a:'نيوت سكاماندر',reward:220},{q:'كنت أستاذًا للجرعات، وأعرف سرًا عن والدة هاري. من أنا؟',a:'سيفيروس سناب',reward:180},{q:'صنعت ذكريات مزيفة لأحمي شخصًا آخر، من أنا؟',a:'هوراس سلاغهورن',reward:210},{q:'كنت أعيش في بيت عائلة بلاك، ثم أصبحت حليفًا لهاري. من أنا؟',a:'سيريوس بلاك',reward:180},{q:'أستطيع التحول إلى كلب أسود، من أنا؟',a:'سيريوس بلاك',reward:190},{q:'أستطيع التحول إلى جرذ، من أنا؟',a:'بيتر بيتيجرو',reward:190},{q:'أستطيع التحول إلى خنفساء لأجمع الأخبار، من أنا؟',a:'ريتا سكيتر',reward:220},{q:'أكتب الأخبار، لكنني لا ألتزم دائمًا بالحقيقة. من أنا؟',a:'ريتا سكيتر',reward:180},{q:'أملك جريدة السحرة الأشهر، لكنني أحب الإثارة. من أنا؟',a:'ديلي برافِت',reward:120},{q:'أعمل في البنك، وأتقن الأعمال المعدنية والسحرية. من أنا؟',a:'عفريت',reward:120},{q:'أملك سيفًا يظهر عند الحاجة، لكنني لست جريفندور نفسه. من أنا؟',a:'جودريك جريفندور',reward:190},{q:'أملك دياديمًا مفقودًا، من أنا؟',a:'روينا رافنكلو',reward:180},{q:'أملك كأسًا أصبحت من الهوركروكسات، من أنا؟',a:'هيلجا هافلباف',reward:190},{q:'أملك قلادة أصبحت هوركروكسًا، من أنا؟',a:'سالازار سليذرين',reward:190},{q:'أملك خاتمًا عائليًا أصبح هوركروكسًا، من أنا؟',a:'مارفولو غاونت',reward:190},{q:'كنت أول شخص في القصة يكتشف أن هاري ساحر، من أنا؟',a:'هاجريد',reward:130},{q:'أرسلت هاري إلى هوجورتس برسالة، لكنني لم أكن بومة. من أنا؟',a:'رسالة هوجورتس',reward:120},{q:'أملك خريطة تكشف تحركات الناس داخل القلعة، من أنا؟',a:'خريطة اللصوص',reward:180},{q:'أقول عبارة تفتح خريطة اللصوص، من أنا؟',a:'خريطة اللصوص',reward:180},{q:'أملك عباءة تجعلني غير مرئي، من أنا؟',a:'عباءة الإخفاء',reward:170},{q:'أملك حجرًا يعيد استدعاء ظلال الموتى، من أنا؟',a:'حجر القيامة',reward:200},{q:'أملك محولًا للزمن، من أنا؟',a:'هيرميون جرانجر',reward:180},{q:'أملك عصا الأخ الأكبر في نهاية القصة، من أنا؟',a:'هاري بوتر',reward:220},{q:'أملك ندبة، لكنها ليست مجرد ندبة. من أنا؟',a:'هاري بوتر',reward:120},{q:'أستطيع التحدث مع الثعابين، من أنا؟',a:'هاري بوتر',reward:150},{q:'كنت والد هاري، وعُرفت بصداقتي مع سيريوس ولوبين وبيتيجرو. من أنا؟',a:'جيمس بوتر',reward:180},{q:'أحب الكويدتش، لكنني لست هاري، من أنا؟',a:'أوليفر وود',reward:150},{q:'كنت حارس مرمى جريفندور، من أنا؟',a:'أوليفر وود',reward:140},{q:'كنت أصغر لاعب في فريق جريفندور في البداية، من أنا؟',a:'هاري بوتر',reward:120},{q:'أرتدي نظارة مستديرة، من أنا؟',a:'هاري بوتر',reward:100},{q:'أملك شعرًا أحمر وأحب الطيران، من أنا؟',a:'رون ويزلي',reward:120},{q:'كنت أعيش في علية بيت ويزلي، وكنت أسبب الفوضى أحيانًا. من أنا؟',a:'غول منزل ويزلي',reward:250},{q:'أملك سيارة تستطيع الطيران، من أنا؟',a:'آرثر ويزلي',reward:150},{q:'أعمل في الوزارة وأحب كل ما يتعلق بالموغّل، من أنا؟',a:'آرثر ويزلي',reward:150},{q:'أملك مجموعة من التوأم المشاغبين، من أنا؟',a:'مولي ويزلي',reward:140},{q:'كنت أعمل في متجر نكت، من أنا؟',a:'فريد ويزلي',reward:140},{q:'كنت أعمل في متجر نكت، من أنا؟',a:'جورج ويزلي',reward:140},{q:'أحب الشطرنج، لكنني لا أملك قطعًا عادية. من أنا؟',a:'رون ويزلي',reward:150},{q:'كنت أفضل صديقة هاري، وأحب الكتب جدًا. من أنا؟',a:'هيرميون جرانجر',reward:110},{q:'كنت أملك عصا من الكرمة وقلب تنين، من أنا؟',a:'هيرميون جرانجر',reward:180},{q:'كنت أملك عصا من الزعرور وشعر وحيد القرن، من أنا؟',a:'دراكو مالفوي',reward:190},{q:'كنت أملك عصا من الطقسوس وريشة عنقاء، من أنا؟',a:'فولدمورت',reward:210},{q:'كنت أملك عصا من الهولي وريشة عنقاء، من أنا؟',a:'هاري بوتر',reward:180},{q:'كنت أملك عصا من البلسان وشعرة ذيل ثيسترال، من أنا؟',a:'دمبلدور',reward:220},{q:'كنت أملك عصا سوداء طويلة، وأدرّس الدفاع والجرعات، من أنا؟',a:'سيفيروس سناب',reward:190},{q:'أرتدي رداءً أخضر وفضيًا، لكنني لست أفعى، من أنا؟',a:'سليذرين',reward:120},{q:'أحب المعرفة وأرتدي ألوانًا زرقاء وبرونزية، من أنا؟',a:'رافنكلو',reward:120},{q:'أحب الوفاء والاجتهاد وأرتدي الأصفر والأسود، من أنا؟',a:'هافلباف',reward:120},{q:'أحب الشجاعة وأرتدي الأحمر والذهبي، من أنا؟',a:'جريفندور',reward:120},{q:'أستطيع رؤية الثيسترال، لكن ليس كل الناس يستطيعون. من أنا؟',a:'هاري بوتر',reward:170},{q:'أربي تنينًا سريًا في برج القلعة، من أنا؟',a:'هاجريد',reward:180},{q:'كنت أملك تنينًا اسمه نوربرت، من أنا؟',a:'هاجريد',reward:180},{q:'أملك هيبوجريفًا اسمه باكبيك، من أنا؟',a:'هاجريد',reward:160},{q:'أعيش مع هاري وأحمل الرسائل، من أنا؟',a:'هيدويج',reward:130},{q:'أعيش في بيت هيرميون وأحب ملاحقة الفئران، من أنا؟',a:'كروكشانك',reward:140},{q:'كنت حارسًا في فريق جريفندور وكنت صديقًا لهاري، من أنا؟',a:'رون ويزلي',reward:120},{q:'أملك موهبة الطيران، لكنني أخاف من العناكب. من أنا؟',a:'رون ويزلي',reward:150},{q:'أعيش في الغابة وأحمل سهامًا، من أنا؟',a:'سنتور',reward:130},{q:'أحب مجلة «ذا كويبلر»، وأرتدي أحيانًا أشياء غريبة، من أنا؟',a:'لونا لوفجود',reward:130},{q:'أحب الأشياء الغريبة وأصدق ما لا يصدقه الآخرون، من أنا؟',a:'لونا لوفجود',reward:130},{q:'أملك أذنين كبيرتين وأحب الملابس، من أنا؟',a:'دوبي',reward:140},{q:'كنت قزم منزل، لكنني أصبحت حرًا. من أنا؟',a:'دوبي',reward:150},{q:'أملك كرة زجاجية، لكنني لا ألعب الكويدتش بها. من أنا؟',a:'سيبيل تريلاوني',reward:150}];
-let puzzleIndex=0;
+let puzzleIndex=Number(localStorage.getItem("wizardPuzzleIndex")||0);
+let solvedPuzzles=JSON.parse(localStorage.getItem("wizardSolvedPuzzles")||"[]");
 const coupons={
 "OWL10":{discount:.10, text:"خصم 10%"},
 "DIAGON15":{discount:.15, text:"خصم 15%"},
@@ -305,12 +344,20 @@ const wandCores={
 "عصا من خشب الجوز":"قلب التنين"
 };
 const potionInfo={
-"جرعة الحظ السائل – Felix Felicis":"الوصفة الرسمية التفصيلية ليست معروضة كاملة في الأفلام؛ تحضيرها في عالم السلسلة يحتاج وقتًا طويلًا وتخميرًا دقيقًا.",
-"جرعة Polyjuice":"تحتاج إلى مكونات متعددة، ومن أشهر عناصرها عينة من الشخص المراد تقليده. تحضيرها يستغرق وقتًا طويلًا في عالم السلسلة.",
-"جرعة النوم الحي – Draught of Living Death":"يرتبط اسمها بمكونات مثل Asphodel وWormwood في درس الجرعات؛ التفاصيل الكاملة للوصفة ترد في الكتب السحرية.",
-"Amortentia – جرعة الحب":"لا توجد وصفة كاملة معروضة في السلسلة؛ أشهر خصائصها أن رائحتها تختلف من شخص لآخر.",
-"جرعة Pepperup":"جرعة مرتبطة بعلاج نزلات البرد واستعادة النشاط؛ الوصفة الكاملة ليست معروضة بالتفصيل في السلسلة.",
-"جرعة Wideye":"جرعة يقظة مرتبطة بمقاومة النوم؛ الوصفة التفصيلية ليست معروضة كاملة في السلسلة."
+"جرعة Truth Serum – مصل الحقيقة":"مصل الحقيقة (Veritaserum). يُستخدم لإجبار الشخص على قول الحقيقة في عالم السلسلة. طريقة التحضير الكاملة غير معروضة في القصة، لذلك لا توجد خطوات دقيقة معتمدة نضيفها هنا.",
+"جرعة Antidote to Veritaserum":"ترياق لمصل الحقيقة. لا تعرض السلسلة وصفة كاملة له؛ صفحة المتجر تكتفي بوصفه كمضاد سحري.",
+"جرعة Blood-Replenishing":"جرعة تعويض الدم، استُخدمت في السلسلة للمساعدة بعد فقدان الدم. طريقة التحضير التفصيلية غير موضحة بالكامل.",
+"جرعة Draught of Peace":"جرعة مهدئة متقدمة. من المكونات المعروفة حجر القمر وشراب الخربق. التحضير يعتمد على ترتيب المكونات والتحريك الدقيق، لكن الوصفة الكاملة ليست معروضة في الأفلام.",
+"جرعة Skele-Gro":"جرعة لإعادة نمو العظام. طريقة التحضير التفصيلية غير معروضة في السلسلة.",
+"جرعة الحظ السائل – Felix Felicis":"Felix Felicis، أو الحظ السائل. جرعة معقدة تستغرق وقتًا طويلًا في التحضير والتخمير. الوصفة الكاملة غير معروضة في الأفلام.",
+"جرعة Polyjuice":"جرعة تغيير الهيئة. من المكونات المذكورة في الكتب جلد البومسلانغ، عشبة العقدة، Fluxweed، وLacewing flies ومكونات أخرى، إضافة إلى جزء من الشخص المراد تقليده. لا نعرض مقادير أو خطوات غير موثقة.",
+"جرعة النوم الحي – Draught of Living Death":"جرعة نوم شديدة القوة. من المكونات المذكورة الأسفوديل والشيح وجذر الناردين ومكونات أخرى. تفاصيل التحضير الدقيقة مرتبطة بكتب الجرعات داخل العالم السحري.",
+"Amortentia – جرعة الحب":"جرعة ذات رائحة مختلفة لكل شخص. السلسلة لا تقدم وصفة تحضير كاملة؛ لذلك نعرض خصائصها بدل اختراع خطوات.",
+"جرعة Pepperup":"جرعة مرتبطة بعلاج البرد واستعادة النشاط. الوصفة الكاملة غير موضحة في السلسلة.",
+"جرعة Wideye":"جرعة تساعد على إبقاء الشخص مستيقظًا. تظهر ضمن الجرعات السحرية المعروفة، لكن طريقة تحضيرها الكاملة ليست معروضة في السلسلة.",
+"جرعة الترياق العام":"ترياق عام لمقاومة بعض آثار الجرعات والسموم السحرية. لا توجد وصفة كاملة موثقة في السلسلة.",
+"Moste Potente Potions":"كتاب جرعات متقدم يحتوي وصفات سحرية، ومنه وصفات جرعات معقدة. ليس جرعة بحد ذاته.",
+"Advanced Potion-Making":"كتاب دراسي متقدم في الجرعات استخدمه طلاب هوجورتس. ليس جرعة بحد ذاته."
 };
 function saveAccount(){localStorage.setItem("wizardAccount",JSON.stringify(account))}
 function ensureBalance(){if(account && typeof account.balance!=="number"){account.balance=STARTING_BALANCE;saveAccount()}}
@@ -406,7 +453,22 @@ function potionPreparation(name){
     "Draught of Peace": 'جرعة مهدئة مشهورة في عالم السحر. تُذكر لها مكونات سحرية مثل حجر القمر وشراب الخربق، لكن ترتيب التحضير والكميات الدقيقة لا تُعرض هنا كوصفة عملية.',
     "Living Death": 'جرعة شديدة القوة مرتبطة بنوم عميق. تظهر في السلسلة كمثال على الجرعات المتقدمة، لكن الوصفة الكاملة والتفاصيل الدقيقة ليست معروضة في المتجر.',
     "Skele-Gro": 'جرعة مرتبطة بإعادة نمو العظام في عالم السحر. طريقة تحضيرها الكاملة ليست موضحة بالتفصيل في السلسلة.',
-    "Wolfsbane": 'جرعة مرتبطة بالمستذئبين وتساعدهم على الاحتفاظ بوعيهم أثناء التحول. تفاصيل الوصفة الكاملة غير معروضة في السلسلة.'
+    "Wolfsbane": 'جرعة مرتبطة بالمستذئبين وتساعدهم على الاحتفاظ بوعيهم أثناء التحول. تفاصيل الوصفة الكاملة غير معروضة في السلسلة.',
+    "Wiggenweld": 'جرعة علاجية معروفة في عالم السحر. التحضير الكامل يختلف حسب المصدر ولا تعرض السلسلة وصفة عملية كاملة، لذلك المتجر يقدمها كمعلومة قصصية.',
+    "Strengthening Solution": 'جرعة مدرسية تذكارية. لا توجد في السلسلة خطوات تحضير كاملة منشورة، لذلك نعرض وصفًا قصصيًا مختصرًا.',
+    "Swelling Solution": 'جرعة مرتبطة بتكبير الأشياء. تفاصيل التحضير الدقيقة ليست معروضة بالكامل في السلسلة.',
+    "Shrinking Solution": 'جرعة مرتبطة بتقليص الأشياء. الوصفة الكاملة ليست معروضة في السلسلة.',
+    "Forgetfulness Potion": 'جرعة مرتبطة بالنسيان. المتجر يعرض وظيفتها القصصية بدل اختراع وصفة كاملة.',
+    "Invigoration": 'إكسير تذكاري لاستعادة النشاط السحري؛ لا توجد وصفة كاملة موثقة في السلسلة.',
+    "Doxycide": 'مستحضر سحري للتعامل مع الدوكسيس؛ تفاصيل التحضير ليست معروضة كوصفة كاملة في السلسلة.',
+    "Shrivelfig": 'مكوّن نباتي يظهر في عالم الجرعات؛ لا توجد وصفة كاملة موثقة لهذا الإكسير في السلسلة.',
+    "Potion of Hiccups": 'جرعة طريفة مرتبطة بالحازوقة؛ لا توجد طريقة تحضير كاملة موثقة في السلسلة.',
+    "Cure for Boils": 'جرعة علاجية من تعليم الجرعات المدرسية؛ تفاصيل التحضير الكاملة ليست معروضة في السلسلة.',
+    "Fire-Protection": 'جرعة تذكارية للحماية من النار؛ المتجر يعرض وصفًا قصصيًا دون خطوات عملية غير موثقة.',
+    "Dreamless Sleep": 'جرعة مرتبطة بنوم هادئ بلا أحلام؛ لا تعرض السلسلة وصفة كاملة لها.',
+    "Confusing Concoction": 'خلطة سحرية تذكارية مرتبطة بالتشوش؛ تفاصيلها الكاملة غير موثقة في السلسلة.',
+    "Strength Potion": 'جرعة تذكارية مرتبطة بالقوة؛ لا توجد وصفة كاملة معروضة في السلسلة.',
+    "Antidote to Common": 'ترياق عام لبعض السموم؛ طريقة التحضير الكاملة ليست معروضة في السلسلة.'
   };
   for(const key of Object.keys(data)){
     if(name.includes(key)) return data[key];
@@ -420,8 +482,17 @@ function details(i){
  if(potionInfo[p[0]])extra=`<div class="detail"><b>⚗️ المكونات وطريقة التحضير:</b><br>${potionInfo[p[0]]}</div>`;
  if(creatureProfiles[p[0]])extra=`<div class="detail"><b>🐾 ملف المخلوق:</b><br>${creatureProfiles[p[0]]}</div>`;
  if(catOf(p)==="النوادر")extra=`<div class="detail"><b>🏛️ ركن النوادر:</b><br>${p[2]}<br><small>قطعة تذكارية خيالية داخل هذا المتجر.</small></div>`;
- document.getElementById("detailBody").innerHTML=`<div class="bigIcon">${p[1]}</div><h2>${p[0]}</h2>${extra}<div class="price">${p[3]} 🪙 جاليون</div><div class="ratingLine">${productStars(i)||"☆ ☆ ☆ ☆ ☆"} <button class="smallBtn" onclick="rateProduct(${i})">تقييم بعد الشراء</button></div><button class="add" onclick="addToCart(${i});closeDetails()">🛒 أضيفي للعربة</button>`;
+ document.getElementById("detailBody").innerHTML=`<img class="detailImg" src="${productArt(p)}" alt="صورة رمزية لـ ${p[0]}"><h2>${p[0]}</h2>${extra}<div class="price">${p[3]} 🪙 جاليون</div><div class="ratingLine">${productStars(i)||"☆ ☆ ☆ ☆ ☆"} <button class="smallBtn" onclick="rateProduct(${i})">تقييم بعد الشراء</button></div><button class="add" onclick="addToCart(${i});closeDetails()">🛒 أضيفي للعربة</button>`;
  document.getElementById("detailModal").classList.add("show");
+}
+
+function productArt(p){
+ const cat=catOf(p);
+ const symbols={العصي:"🪄",الجرعات:"⚗️",الكتب:"📚",المخلوقات:"🐉",الملابس:"🧥",الأدوات:"🔮",النوادر:"💎",الطيران:"🧹"};
+ const sym=symbols[cat]||p[1]||"✨";
+ const safe=String(p[0]).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").slice(0,42);
+ const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#34224b"/><stop offset="1" stop-color="#120d19"/></linearGradient></defs><rect width="640" height="360" rx="28" fill="url(#g)"/><circle cx="320" cy="145" r="92" fill="#6b4d87" opacity=".25"/><text x="320" y="180" text-anchor="middle" font-size="104">${sym}</text><text x="320" y="285" text-anchor="middle" fill="#ead8ae" font-size="25" font-family="Arial">${safe}</text><text x="320" y="322" text-anchor="middle" fill="#aa9ab7" font-size="16" font-family="Arial">DIAGON ALLEY • WIZARDING SHOP</text></svg>`;
+ return "data:image/svg+xml;charset=UTF-8,"+encodeURIComponent(svg);
 }
 function renderNav(){nav.innerHTML=cats.map(c=>`<button class="${c===category?'active':''}" onclick="category='${c}';renderNav();render()">${c}</button>`).join("")}
 function render(){
@@ -429,7 +500,7 @@ function render(){
  let arr=products.filter(p=>catOf(p)!=="الطيران" && (category==="الكل"||catOf(p)===category)&&(!q||p[0].toLowerCase().includes(q)||p[2].toLowerCase().includes(q)));
  title.textContent=category==="الكل"?"كل المنتجات":category;
  count.textContent=arr.length+" منتج";
- grid.innerHTML=arr.map((p,i)=>`<article class="card"><div class="icon">${p[1]}</div><h3>${p[0]}</h3><div class="desc">${p[2]}</div><div class="price">${p[3]} 🪙 جاليون</div><div class="cardActions"><button class="add" onclick="addToCart(${products.indexOf(p)})">🛒 أضيفي للعربة</button><button class="detailsBtn" onclick="details(${products.indexOf(p)})">التفاصيل</button></div></article>`).join("");
+ grid.innerHTML=arr.map((p,i)=>`<article class="card"><img class="productImg" src="${productArt(p)}" alt="صورة رمزية لـ ${p[0]}" loading="lazy"><div class="iconMini">${p[1]}</div><h3>${p[0]}</h3><div class="desc">${p[2]}</div><div class="price">${p[3]} 🪙 جاليون</div><div class="cardActions"><button class="add" onclick="addToCart(${products.indexOf(p)})">🛒 أضيفي للعربة</button><button class="detailsBtn" onclick="details(${products.indexOf(p)})">التفاصيل</button></div></article>`).join("");
 }
 function addToCart(i){
  if(!loggedIn){showLogin();return}
@@ -485,18 +556,49 @@ function addPuzzleCoins(n){
 }
 function openGames(){document.getElementById("gamesModal").classList.add("show");renderGame();}
 function closeGames(){document.getElementById("gamesModal").classList.remove("show")}
+function getNextPuzzleIndex(){
+  if(solvedPuzzles.length>=puzzleQuestions.length) return -1;
+  for(let step=0;step<puzzleQuestions.length;step++){
+    const idx=(puzzleIndex+step)%puzzleQuestions.length;
+    if(!solvedPuzzles.includes(idx)) return idx;
+  }
+  return -1;
+}
 function renderGame(){
- const q=puzzleQuestions[puzzleIndex%puzzleQuestions.length];
- document.getElementById("gameBody").innerHTML=`
- <div class="gameTabs"><button onclick="showWhoAmI()">🕵️ من أنا؟</button></div>
- <div id="gameContent"><div class="difficulty">🔥 مستوى صعب جدًا — السؤال ${(puzzleIndex%100)+1} من 100</div><h3>🕵️ لغز من أنا؟</h3><p>${q.q}</p><input id="riddleAnswer" class="formInput" placeholder="اكتبي الإجابة"><button class="checkout" onclick="solveRiddle()">حل اللغز ✦</button><p class="gameReward">الجائزة: ${q.reward} جاليون</p></div>`;
+ const idx=getNextPuzzleIndex();
+ const body=document.getElementById("gameBody");
+ if(idx===-1){
+   body.innerHTML=`<div class="gameTabs"><button onclick="showWhoAmI()">🕵️ من أنا؟</button></div>
+   <div id="gameContent"><div class="difficulty">🏆 اكتمل التحدي</div>
+   <h3>أحسنتِ! خلصتِ الـ100 سؤال 🎉</h3>
+   <p>تم حفظ تقدمك. لن تتكرر الأسئلة التي حللتِها.</p>
+   <p class="gameReward">حللتِ ${solvedPuzzles.length} من ${puzzleQuestions.length} سؤال.</p></div>`;
+   return;
+ }
+ puzzleIndex=idx;
+ localStorage.setItem("wizardPuzzleIndex",String(puzzleIndex));
+ const q=puzzleQuestions[idx];
+ body.innerHTML=`<div class="gameTabs"><button onclick="showWhoAmI()">🕵️ من أنا؟</button></div>
+ <div id="gameContent"><div class="difficulty">🔥 مستوى صعب جدًا — السؤال ${solvedPuzzles.length+1} من ${puzzleQuestions.length}</div>
+ <h3>🕵️ لغز من أنا؟</h3><p>${q.q}</p>
+ <input id="riddleAnswer" class="formInput" placeholder="اكتبي الإجابة" autocomplete="off">
+ <button class="checkout" onclick="solveRiddle()">حل اللغز ✦</button>
+ <p class="gameReward">الجائزة: ${q.reward} جاليون</p></div>`;
 }
 function showWhoAmI(){renderGame()}
 function solveRiddle(){
- const q=puzzleQuestions[puzzleIndex%puzzleQuestions.length];
+ const idx=getNextPuzzleIndex();
+ if(idx===-1){renderGame();return;}
+ const q=puzzleQuestions[idx];
  const a=document.getElementById("riddleAnswer").value.trim().toLowerCase();
  if(a && (a===q.a.toLowerCase() || a.includes(q.a.toLowerCase()))){
-   addPuzzleCoins(q.reward); puzzleIndex++; showToast(`صح! كسبتِ ${q.reward} جاليون 🪙`); renderGame();
+   if(!solvedPuzzles.includes(idx)) solvedPuzzles.push(idx);
+   localStorage.setItem("wizardSolvedPuzzles",JSON.stringify(solvedPuzzles));
+   puzzleIndex=(idx+1)%puzzleQuestions.length;
+   localStorage.setItem("wizardPuzzleIndex",String(puzzleIndex));
+   addPuzzleCoins(q.reward);
+   showToast(`صح! كسبتِ ${q.reward} جاليون 🪙`);
+   renderGame();
  }else alert("إجابة غير صحيحة، حاولي مرة أخرى ✦");
 }
 
@@ -537,27 +639,14 @@ window.addEventListener("keydown", function(e){
 
 <script>
 document.addEventListener("DOMContentLoaded",function(){
-  const login = document.querySelector("#loginModal, .loginModal, [id*="login"]");
+  const login=document.querySelector('#loginModal, .loginModal, [id*="login"]');
   if(login && !document.getElementById("quickStoreBtn")){
     const b=document.createElement("button");
     b.id="quickStoreBtn"; b.type="button";
     b.textContent="🪄 دخول سريع للمتجر";
     b.style.cssText="margin-top:10px;width:100%;padding:12px;border-radius:12px;border:1px solid #80683e;background:#241b31;color:#f7e8c8;font-weight:700;cursor:pointer";
-    b.onclick=function(){
-      try{
-        if(typeof loggedIn!=="undefined") loggedIn=true;
-        if(typeof account!=="undefined" && !account){
-          account={name:"ساحرة جديدة",house:"هافلباف",balance:4000};
-          if(typeof saveAccount==="function") saveAccount();
-        }
-        if(typeof showLogin==="function") showLogin();
-        else login.classList.remove("show");
-        if(typeof render==="function") render();
-        if(typeof updateAccountUI==="function") updateAccountUI();
-        if(typeof updateBalanceUI==="function") updateBalanceUI();
-      }catch(e){ login.classList.remove("show"); }
-    };
-    login.querySelector(".box, form, .modal-content")?.appendChild(b);
+    b.onclick=function(){ try{ if(typeof loggedIn!=="undefined") loggedIn=true; localStorage.setItem("wizardLoggedIn","1"); login.classList.remove("show"); render(); updateAccountUI(); updateBalanceUI(); }catch(e){ login.classList.remove("show"); } };
+    (login.querySelector(".box, form")||login).appendChild(b);
   }
 });
 </script>
