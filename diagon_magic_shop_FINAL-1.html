@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>زقاق دياجون | متجر الأدوات السحرية</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=MedievalSharp&display=swap');
+:root{--bg:#100d18;--panel:#1b1526;--gold:#d9b45b;--cream:#f3e4bd;--muted:#b9abc7;--purple:#332044}
+*{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at top,#332044,#100d18 55%);color:var(--cream);font-family:Cairo,Arial,sans-serif}
+header{position:sticky;top:0;z-index:5;background:rgba(16,13,24,.94);backdrop-filter:blur(12px);border-bottom:1px solid #5d4870}
+.top{max-width:1200px;margin:auto;padding:14px 20px;display:flex;gap:20px;align-items:center}
+.logo{font-family:Georgia,serif;font-size:28px;color:var(--gold);font-weight:800;white-space:nowrap}
+.search{flex:1;display:flex;background:#241b31;border:1px solid #5d4870;border-radius:14px;overflow:hidden}
+.search input{flex:1;background:none;border:0;outline:0;color:white;padding:12px;font-family:inherit}.search button{border:0;background:var(--gold);padding:0 18px;cursor:pointer}
+.cart{border:1px solid #5d4870;border-radius:14px;padding:10px 14px;cursor:pointer;background:#241b31}
+nav{max-width:1200px;margin:auto;padding:0 20px 14px;display:flex;gap:9px;overflow:auto}nav button{white-space:nowrap;background:#241b31;color:var(--cream);border:1px solid #5d4870;border-radius:999px;padding:8px 15px;cursor:pointer}nav button.active{background:var(--gold);color:#1a1320}
+.hero{max-width:1200px;margin:35px auto 20px;padding:0 20px}.heroBox{border:1px solid #725a3a;border-radius:24px;padding:38px;background:linear-gradient(135deg,rgba(74,45,92,.9),rgba(26,19,37,.9));box-shadow:0 20px 60px #0007;position:relative;overflow:hidden}.heroBox:after{content:"✦  ✧  ✦  ✧  ✦";position:absolute;left:25px;top:18px;color:#d9b45b77;font-size:28px}.hero h1{font-family:Georgia,serif;font-size:48px;margin:0 0 8px;color:var(--gold)}.hero p{color:var(--muted);font-size:18px;margin:0 0 20px}.badges{display:flex;gap:10px;flex-wrap:wrap}.badge{border:1px solid #80683e;border-radius:999px;padding:7px 12px;background:#17121f}
+main{max-width:1200px;margin:auto;padding:10px 20px 60px}.sectionTitle{display:flex;justify-content:space-between;align-items:end;margin:30px 0 15px}.sectionTitle h2{margin:0;font-size:25px}.count{color:var(--muted);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}.card{background:linear-gradient(180deg,#241a31,#19131f);border:1px solid #4e3d5c;border-radius:18px;padding:15px;transition:.2s}.card:hover{transform:translateY(-4px);border-color:#8c7044;box-shadow:0 14px 30px #0005}.icon{height:125px;border-radius:14px;background:radial-gradient(circle,#46305c,#1a1421);display:grid;place-items:center;font-size:64px;margin-bottom:12px}.card h3{font-size:17px;margin:4px 0}.desc{font-size:13px;color:var(--muted);min-height:40px}.price{font-weight:800;color:var(--gold);font-size:18px;margin:10px 0}.add{width:100%;padding:10px;border:0;border-radius:11px;background:var(--gold);color:#1a1320;font-weight:800;cursor:pointer}.add:hover{filter:brightness(1.08)}
+footer{border-top:1px solid #4e3d5c;background:#0d0a12;padding:30px 20px;text-align:center;color:var(--muted)}
+.modal{position:fixed;inset:0;background:#0009;display:none;align-items:center;justify-content:center;z-index:10;padding:20px}.modal.show{display:flex}.box{width:min(600px,100%);background:#1b1526;border:1px solid #80683e;border-radius:20px;padding:24px;box-shadow:0 30px 80px #000}.boxHead{display:flex;justify-content:space-between;align-items:center}.close{background:none;border:0;color:white;font-size:26px;cursor:pointer}.bigIcon{font-size:90px;text-align:center;background:#241b31;border-radius:16px;padding:20px}.detail{margin:14px 0;padding:14px;background:#241b31;border:1px solid #4e3d5c;border-radius:12px;line-height:1.9}.cartItem{display:flex;justify-content:space-between;border-bottom:1px solid #3e304b;padding:12px 0}.empty{color:var(--muted);text-align:center;padding:30px}.checkout{margin-top:18px;width:100%;padding:13px;background:var(--gold);border:0;border-radius:12px;font-weight:800;cursor:pointer}
+@media(max-width:650px){.top{flex-wrap:wrap}.logo{width:100%;text-align:center}.hero h1{font-size:34px}.heroBox{padding:28px 20px}}
+
+label{display:block;margin:12px 0 5px;color:var(--muted)}.formInput{width:100%;padding:12px;background:#241b31;color:white;border:1px solid #5d4870;border-radius:10px;font-family:inherit}.secondary{margin-top:9px;background:#332044;color:var(--cream);border:1px solid #6c557d}.stars{color:var(--gold);display:inline-block;font-size:20px}.ratingLine{display:flex;align-items:center;gap:12px;margin:12px 0}.smallBtn{background:#241b31;border:1px solid #5d4870;color:var(--cream);border-radius:9px;padding:7px 10px;cursor:pointer}.profileMini{padding:10px;background:#241b31;border-radius:10px}.profileHero{text-align:center}
+
+.loginPage{position:fixed;inset:0;z-index:100;background:radial-gradient(circle at top,#3b2450,#09070d 70%);display:none;align-items:center;justify-content:center;padding:20px}.loginPage.showPage{display:flex}.loginCard{width:min(470px,100%);background:#1b1526;border:1px solid #80683e;border-radius:25px;padding:34px;box-shadow:0 30px 100px #0009;text-align:center}.loginLogo{font:800 34px Georgia;color:#d9b45b}.loginSub{color:#b9abc7;margin-bottom:10px}.loginIcon{font-size:70px;margin:8px}.loginCard h1{margin:5px 0;color:#f3e4bd}.loginCard p{color:#b9abc7;line-height:1.8}.loginCard .formInput{margin:7px 0}.loginError{color:#ef9a9a;min-height:24px}.couponHint{margin-top:12px;color:#d9b45b;font-size:13px}.couponBox{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.couponBox .formInput{flex:1}.couponBox div{width:100%;color:#b9abc7;font-size:13px}
+
+.cardActions{display:flex;gap:7px}.cardActions .add{flex:1}.detailsBtn{border:1px solid #80683e;background:#241b31;color:var(--cream);border-radius:11px;padding:10px;cursor:pointer}.detailsBtn:hover{background:#332044}.welcomeBox{text-align:center}.welcomeStar{font-size:55px;color:var(--gold)}.welcomeBox h2{font:800 32px Georgia;color:var(--gold)}.welcomeBox p{color:var(--muted);line-height:1.8}.welcomeQuote{font-size:15px!important;color:var(--cream)!important}.toast{position:fixed;bottom:25px;left:50%;transform:translate(-50%,20px);background:#2b1d39;border:1px solid #80683e;color:var(--cream);padding:13px 20px;border-radius:12px;opacity:0;pointer-events:none;transition:.25s;z-index:200}.toast.show{opacity:1;transform:translate(-50%,0)}
+
+.removeItem{border:1px solid #704d55;background:#2a1720;color:#f0b1b1;border-radius:7px;width:27px;height:27px;cursor:pointer;font-size:18px}.gameBox{text-align:center}.gameTabs{display:flex;gap:8px;margin-bottom:18px}.gameTabs button{flex:1;padding:10px;border-radius:10px;border:1px solid #80683e;background:#241b31;color:var(--cream);cursor:pointer}.gameReward{color:var(--gold);font-weight:700}.sudoku{display:grid;grid-template-columns:repeat(2,70px);gap:7px;justify-content:center;margin:18px}.sudoku input{height:70px;text-align:center;font-size:28px;background:#241b31;color:white;border:1px solid #80683e;border-radius:8px}
+ .difficulty{display:inline-block;padding:6px 10px;border:1px solid #80683e;border-radius:999px;color:#d9b45b;margin-bottom:10px;font-size:13px}
+
+.prepBox{margin:18px 0;padding:16px;border:1px solid #80683e;border-radius:14px;background:#17121f;text-align:right}.prepBox h3{color:var(--gold);margin-top:0}.prepBox p{color:var(--muted);line-height:1.9}
+.modal .close{z-index:20;position:relative;pointer-events:auto}
+
+.prepBox{margin:16px 0;padding:16px;border:1px solid #80683e;border-radius:14px;background:#17121f;text-align:right}
+.prepBox h3{margin:0 0 8px;color:var(--gold)}
+.prepBox p{margin:0;color:var(--muted);line-height:1.9}
+.infoGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.infoGrid div{background:#21182c;border:1px solid #4c3a5d;border-radius:10px;padding:10px;text-align:center}
+.infoGrid b{display:block;color:var(--gold);margin-bottom:4px}
+.infoGrid span{font-size:12px;color:var(--muted)}
+@media(max-width:600px){.infoGrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="loginPage" class="loginPage">
+  <div class="loginCard">
+    <div class="loginLogo">✦ زقاق دياجون ✦</div>
+    <div class="loginSub">بوابة السحرة</div>
+    <div class="loginIcon">🧙‍♀️</div>
+    <h1>دخول عالم السحر</h1>
+    <p>أنشئي حساب الساحر واختاري منزلك لتحصلي على <b>4000 جاليون</b> كبداية.</p>
+    <input id="loginName" class="formInput" placeholder="اسم الساحر">
+    <input id="loginEmail" class="formInput" placeholder="البريد السحري">
+    <select id="loginHouse" class="formInput">
+      <option value="">اختاري المنزل (اختياري)</option>
+      <option>جريفندور</option><option>سليذرين</option><option>رافنكلو</option><option>هافلباف</option>
+    </select>
+    <div id="loginError" class="loginError"></div>
+    <button class="checkout" onclick="enterStore()">دخول المتجر ✦</button>
+    <div class="couponHint">🎁 كود البداية: OWL10 — خصم 10%</div>
+  </div>
+</div>
+
+<header>
+  <div class="top">
+    <div class="logo">✦ زقاق دياجون</div>
+    <div class="search"><input id="search" placeholder="ابحثي عن عصا، جرعة، كتاب..."><button onclick="render()">بحث</button></div>
+    <button class="cart" id="accountBtn" onclick="openAccount()">🧙 حساب الساحر</button><button class="cart" id="balanceBtn" onclick="openProfile()">🪙 4000 جاليون</button><button class="cart" onclick="openGames()">🎲 اكسب جاليونات</button><div class="cart" onclick="openCart()">🛒 السلة <b id="cartCount">0</b></div>
+  </div>
+  <nav id="nav"></nav>
+</header>
+
+<section class="hero">
+  <div class="heroBox">
+    <h1>متجر الأدوات السحرية</h1>
+    <p>من أول عصا سحرية لآخر بومة بريدية — كل ما يحتاجه الساحر في مكان واحد.</p>
+    <div class="badges"><span class="badge">🦉 توصيل بالبومة</span><span class="badge">🪙 الدفع بالجاليون</span><span class="badge" onclick="showRare()" style="cursor:pointer">🏛️ ركن النوادر</span><span class="badge">🔮 منتجات مختارة للسحرة</span></div>
+  </div>
+</section>
+
+<main>
+  <div class="sectionTitle"><h2 id="title">كل المنتجات</h2><span class="count" id="count"></span></div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer>© زقاق دياجون — متجر خيالي لعشاق عالم السحر ✦</footer>
+
+<div class="modal" id="welcomeModal"><div class="box welcomeBox"><div class="welcomeStar">✦</div><h2>استخدميه بحكمة</h2><p id="welcomeText"></p><p class="welcomeQuote">الجاليون كثير، لكن الحكمة أثمن من الذهب.</p><button class="checkout" onclick="closeWelcome()">دخول المتجر 🪄</button></div></div>
+<div class="modal" id="accountModal"><div class="box"><div class="boxHead"><h2>🧙 حساب الساحر</h2><button class="close" onclick="closeAccount()">×</button></div><div id="accountStatus"></div><label>اسم الساحر</label><input class="formInput" id="accountName" placeholder="مثلاً: هيرميون"><label>البريد السحري</label><input class="formInput" id="accountEmail" placeholder="owl@hogwarts.example"><label>اختاري منزلك</label><select class="formInput" id="houseSelect"><option value="">اختاري المنزل</option><option>جريفندور</option><option>سليذرين</option><option>رافنكلو</option><option>هافلباف</option></select><button class="checkout" onclick="saveProfile()">حفظ الحساب ✦</button><button class="checkout secondary" onclick="closeAccount();openProfile()">فتح البروفايل</button></div></div>
+<div class="modal" id="profileModal"><div class="box"><div class="boxHead"><h2>🪪 بروفايل الساحر</h2><button class="close" onclick="closeProfile()">×</button></div><div id="profileBody"></div></div></div>
+<div class="modal" id="gamesModal"><div class="box gameBox"><div class="boxHead"><h2>🎲 قاعة التحديات السحرية</h2><button type="button" class="close" onclick="closeGames()">×</button></div><div id="gameBody"></div></div></div>
+<div class="modal" id="detailModal"><div class="box"><div class="boxHead"><h2>تفاصيل المنتج</h2><button class="close" onclick="closeDetails()">×</button></div><div id="detailBody"></div></div></div>
+<div class="modal" id="modal">
+  <div class="box">
+    <div class="boxHead"><h2>🛒 سلة المشتريات</h2><button type="button" class="close" aria-label="إغلاق" onclick="closeCart()">×</button></div>
+    <div id="cartItems"></div><div id="total"></div>
+    <button class="checkout" onclick="buyCart()">إتمام الطلب ✦</button>
+  </div>
+</div>
+
+<script>
+const products=[
+["عصا الأخ الأكبر – Elder Wand","🪄","العصا الأسطورية المصنوعة من خشب البلسان، ونواتها شعرة من ذيل ثيسترال.","1000"],
+["عصا سيفيروس سناب – Blackthorn & Unicorn","🪄","عصا سناب بتصميم تذكاري مستوحى من شخصيته؛ النواة في هذه النسخة خيالية.","390"],
+["عصا ألباس دمبلدور – Elder Wand","🪄","نسخة تذكارية من العصا الأسطورية التي امتلكها دمبلدور.","1200"],
+["عصا مينيرفا ماكغوناغال – Fir & Dragon","🪄","نسخة تذكارية مستوحاة من عصا ماكغوناغال.","370"],
+["عصا هاجريد – Umbrella Wand","🪄","مظلة وردية تذكارية مستوحاة من عصا هاجريد.","250"],
+["عصا هاري – Holly & Phoenix","🪄","خشب الهولي ونواة من ريشة العنقاء؛ عصا مرتبطة ببطل السلسلة.","450"],
+["عصا فولدمورت – Yew & Phoenix","🪄","خشب الطقسوس ونواة ريشة العنقاء نفسها المرتبطة بعصا هاري.","480"],
+["عصا رون – Ash & Unicorn","🪄","عصا خشب الرماد المرتبطة برون في بداية رحلته.","220"],
+["عصا هيرميون – Vine & Dragon","🪄","خشب الكرمة ونواة من قلب التنين.","420"],
+["عصا دراكو – Hawthorn & Unicorn","🪄","خشب الزعرور ونواة شعر وحيد القرن.","360"],
+["عصا من خشب البلوط","🪄","خشب قوي ومرن، مناسب للسحر الدفاعي.","120"],
+["عصا من خشب الصفصاف","🪄","خشب مرن ودقيق للتعاويذ المعقدة.","150"],
+["عصا من خشب الجوز","🪄","خشب مناسب للسحرة الأذكياء والمبدعين.","175"],
+["قلب التنين – Dragon Heartstring","🐉","نواة عصا سحرية قوية وسريعة التعلم.","220"],
+["ريشة العنقاء – Phoenix Feather","🔥","نواة نادرة من ريشة العنقاء.","260"],
+["شعر وحيد القرن – Unicorn Hair","🦄","نواة مستقرة وموثوقة.","200"],
+
+["جرعة Truth Serum – مصل الحقيقة","🧪","جرعة تذكارية مستوحاة من مصل الحقيقة المستخدم في عالم السحر.","135"],
+["جرعة Antidote to Veritaserum","🧪","نسخة خيالية تذكارية من ترياق لمصل الحقيقة.","145"],
+["جرعة Blood-Replenishing","🩸","جرعة سحرية مرتبطة باستعادة الدم في عالم السحر؛ نسخة متجر خيالية.","120"],
+["جرعة Draught of Peace","🕊️","جرعة تذكارية مرتبطة بالهدوء والراحة في عالم السحر.","125"],
+["جرعة Skele-Gro","🦴","جرعة شهيرة مرتبطة بإعادة نمو العظام في السلسلة.","145"],
+["جرعة الحظ السائل – Felix Felicis","🧪","جرعة تمنح حظًا استثنائيًا لفترة محدودة في عالم السحر.","150"],
+["جرعة Polyjuice","🧪","جرعة تنكرية تغيّر مظهر الشارب مؤقتًا في عالم السلسلة.","170"],
+["جرعة النوم الحي – Draught of Living Death","💤","جرعة قوية مرتبطة بنوم عميق جدًا.","140"],
+["Amortentia – جرعة الحب","💗","أشهر جرعة حب؛ رائحتها تختلف من شخص لآخر.","160"],
+["جرعة Pepperup","🌶️","جرعة مرتبطة بعلاج البرد واستعادة النشاط.","80"],
+["جرعة Wideye","👁️","جرعة يقظة مرتبطة بمقاومة النوم.","95"],
+["جرعة الترياق العام","⚗️","ترياق سحري لبعض السموم والجرعات.","110"],
+["Bezoar – حجر الترياق","🪨","حجر يستخدم كترياق لبعض السموم.","130"],
+["مجموعة جرعات المبتدئين","⚗️","مرجل صغير وزجاجات وأدوات ومكونات أساسية.","180"],
+
+["Nimbus 2000","🧹","مكنسة طيران رياضية شهيرة وسريعة.","450"],
+["Nimbus 2001","🧹","نسخة مطورة من Nimbus 2000.","520"],
+["Firebolt","🧹","مكنسة سباق فائقة السرعة.","900"],
+["Firebolt Supreme","🧹","إصدار فاخر متقدم لمحبي السباقات.","1100"],
+["Cleansweep Seven","🧹","مكنسة رياضية موثوقة من سلسلة Cleansweep.","400"],
+["Comet 260","🧹","مكنسة رياضية قديمة من سلسلة Comet.","350"],
+["Comet 290","🧹","إصدار رياضي مطور من سلسلة Comet.","390"],
+["Moontrimmer","🧹","مكنسة طيران قديمة بتصميم كلاسيكي.","280"],
+
+["رداء جريفندور","🦁","رداء طلاب جريفندور بالأحمر والذهبي وشعار الأسد.","140"],
+["رداء سليذرين","🐍","رداء طلاب سليذرين بالأخضر والفضي وشعار الأفعى.","140"],
+["رداء رافنكلو","🦅","رداء طلاب رافنكلو بالأزرق والبرونزي وشعار النسر.","140"],
+["رداء هافلباف","🦡","رداء طلاب هافلباف بالأصفر والأسود وشعار الغرير.","140"],
+["رداء أستاذ هوجورتس","🎓","رداء رسمي مستوحى من ملابس أساتذة القلعة.","190"],
+["قبعة الفرز","🎩","نسخة تذكارية من القبعة التي تحدد منزل الطالب.","90"],
+["عباءة الإخفاء","🫥","عباءة نادرة تساعد على التخفي في عالم السحر.","300"],
+
+["بومة ثلجية – Hedwig","🦉","بومة ثلجية شهيرة مرتبطة بهاري.","250"],
+["Scops Owl – بومة صغيرة","🦉","بومة بريدية صغيرة.","55"],
+["Pygmy Puff","🟣","مخلوق أليف صغير لطيف.","80"],
+["Niffler – نيّفلر","🦔","مخلوق يحب الأشياء اللامعة والكنوز.","220"],
+["Bowtruckle – بومتروكل","🌿","مخلوق شجري صغير يعيش قرب الأشجار.","180"],
+["Pixie – جني الكورنيش","🧚","مخلوق طائر صغير مشاغب.","100"],
+["Fwooper – فوبر","🦜","طائر سحري ذو ألوان زاهية وصوت مميز.","190"],
+["Diricawl – ديريكاول","🐦","طائر سحري قادر على الاختفاء والظهور في مكان آخر.","210"],
+["Mooncalf – مونكالف","🌙","مخلوق خجول يظهر ليلًا في الحقول.","200"],
+["Thestral – ثيسترال","🐎","مخلوق مجنح غامض يظهر في عالم السحر.","500"],
+["Hippogriff – هيبوجريف","🦅","مخلوق نصفه نسر ونصفه حصان؛ التعامل معه يحتاج احترامًا.","450"],
+["Occamy – أوكامي","🐍","مخلوق مجنح سحري قادر على تغيير حجمه.","320"],
+["Demiguise – ديميغايز","🐒","مخلوق خجول يشبه القرد ويمكنه إخفاء نفسه.","300"],
+["Erumpent – إيرمبنت","🦏","مخلوق ضخم ذو قرن خطير وذيل يشبه الحبل.","420"],
+["Graphorn – غرافورن","🦏","مخلوق جبلي قوي ذو قرنين كبيرين.","460"],
+["Swooping Evil – الشر المنقض","🦋","مخلوق طائر غريب من عالم السحر.","350"],
+["Murtlap – مورتلاب","🐀","مخلوق مائي صغير يعيش قرب السواحل.","160"],
+["Leprechaun – ليبركون","🧚","مخلوق سحري صغير مرتبط بالذهب والخداع.","180"],
+["Kelpie – كيلبي","🐴","مخلوق مائي سحري يتخذ هيئة حصان.","390"],
+["Fire-Dwelling Salamander – السمندر الناري","🦎","مخلوق يعيش في النار ويحب الحرارة.","250"],
+["Phoenix – عنقاء","🔥","طائر نادر يتميز بالتجدد والقدرات السحرية.","800"],
+["Basilisk – باسيليسك","🐍","ثعبان سحري عملاق من الأساطير السحرية.","1200"],
+["Acromantula – أكرومانتولا","🕷️","عنكبوت سحري ضخم وذكي.","700"],
+["Merpeople – حوريات البحر","🧜","شعب سحري مائي يعيش في البحيرات السحرية.","600"],
+["Centaur – سنتور","🏹","كائن نصفه إنسان ونصفه حصان، مشهور بعلم النجوم.","650"],
+["House-Elf – قزم منزل","🧝","كائن سحري منزلي من عالم السحر.","400"],
+["Goblin – عفريت","⛏️","شعب سحري بارع في الأعمال المعدنية والبنوك.","450"],
+["Dragon – تنين","🐉","مخلوق سحري قوي؛ نسخة متجر خيالية تذكارية.","1000"],
+["Norwegian Ridgeback – تنين نرويجي","🐉","سلالة تنين نادرة مرتبطة بنوربرت.","1200"],
+["Fluffy – الكلب ذو الرؤوس الثلاثة","🐶","كلب حراسة سحري بثلاثة رؤوس، مستوحى من فلافّي.","900"],
+["Acromantula Aragog – أراجوج","🕷️","عنكبوت أكرومانتولا شهير من القصة.","950"],
+["Grawp – عملاق","🗿","عملاق من عائلة العمالقة يظهر في السلسلة.","850"],
+["Buckbeak – باكبيك","🦅","هيبوجريف شهير من أحداث السلسلة.","700"],
+["Fang – كلب هاجريد","🐕","كلب هاجريد الودود.","180"],
+["Crookshanks – كروكشانك","🐈","قط هيرميون الذكي.","220"],
+["Trevor – ضفدع نيفيل","🐸","ضفدع نيفيل الأليف.","60"],
+["Scabbers – فأر رون","🐀","فأر رون الأليف في بداية السلسلة.","60"],
+["Aragog’s Acromantulas – نسل أراجوج","🕷️","مجموعة تذكارية من عناكب الغابة المحرمة.","800"],
+
+["The Dark Arts Outsmarted","📕","كتاب تذكاري عن مواجهة السحر المظلم.","95"],
+["Moste Potente Potions","🧪","مرجع قديم للجرعات القوية.","115"],
+["The Dream Oracle","🌙","كتاب لتفسير الأحلام السحرية.","85"],
+["A Guide to Advanced Transfiguration","📚","مرجع متقدم للتحول والسحر النظري.","125"],
+["The Essential Defence Against the Dark Arts","🛡️","مرجع للدفاع ضد السحر المظلم.","110"],
+["Book of Magical Creatures","🐾","موسوعة مصورة للمخلوقات السحرية.","105"],
+["The Life and Lies of Albus Dumbledore","📔","كتاب تذكاري عن سيرة دمبلدور كما وردت في عالم السلسلة.","120"],
+["The Dark Arts Outsmarted – نسخة مدرسية","📕","نسخة مدرسية تذكارية للدراسة.","100"],
+["كتاب التعويذات القياسية – الصف الأول","📖","من الكتب الدراسية التي يحتاجها طلاب السنة الأولى.","70"],
+["كتاب التعويذات القياسية – الصف الثاني","📖","كتاب دراسي لمادة التعويذات.","75"],
+["A History of Magic","📚","كتاب تاريخ السحر المدرسي.","80"],
+["Fantastic Beasts and Where to Find Them","📘","مرجع شهير للمخلوقات السحرية.","100"],
+["The Standard Book of Spells","📖","سلسلة كتب أساسية للتعويذات.","90"],
+["Advanced Potion-Making","🧪","كتاب الجرعات المتقدمة المستخدم في دروس هوجورتس.","120"],
+["One Thousand Magical Herbs and Fungi","🌿","مرجع للنباتات والفطريات السحرية.","110"],
+["The Dark Forces: A Guide to Self-Protection","🛡️","مرجع للحماية من قوى الظلام.","105"],
+["Curses and Counter-Curses","📕","كتاب عن اللعنات وطرق مواجهتها في عالم السحر.","95"],
+["The Monster Book of Monsters","👹","كتاب حي وغريب عن المخلوقات الخطرة.","130"],
+["The Dream Oracle","🌙","كتاب لتفسير الأحلام في عالم السحر.","85"],
+["Quidditch Through the Ages","🏆","مرجع عن تاريخ وقواعد الكويدتش.","90"],
+["The Tales of Beedle the Bard","📜","مجموعة حكايات سحرية شهيرة.","85"],
+
+["حجر الفيلسوف","💎","قطعة أثرية نادرة مرتبطة بصناعة حجر الفيلسوف؛ نسخة تذكارية خيالية.","1500"],
+["مرآة إيريسيد","🪞","مرآة تكشف أعمق رغبات القلب في عالم السحر.","650"],
+["مذكرات توم ريدل","📔","قطعة أثرية مظلمة مرتبطة بأحداث غرفة الأسرار؛ نسخة تذكارية خيالية.","900"],
+["خاتم مارفولو غاونت","💍","قطعة أثرية مرتبطة بعائلة غاونت؛ للعرض التذكاري فقط.","850"],
+["قلادة سالازار سليذرين","📿","قطعة أثرية تذكارية مستوحاة من إرث سليذرين.","950"],
+["كأس هيلجا هافلباف","🏆","قطعة أثرية تذكارية مرتبطة بأحد مؤسسي هوجورتس.","950"],
+["سيف جريفندور","⚔️","نسخة تذكارية من السيف الأسطوري.","1000"],
+["دياديم رافنكلو","👑","قطعة أثرية تذكارية مرتبطة برابنكلو.","950"],
+["الخزنة الغامضة – Gringotts","🏦","صندوق تذكاري مستوحى من خزائن بنك السحرة.","500"],
+["حجرة الأسرار – مفتاح تذكاري","🗝️","مفتاح ديكوري مستوحى من أسرار القلعة.","300"],
+["خريطة اللصوص","🗺️","نسخة تذكارية من الخريطة التي تكشف التحركات داخل القلعة.","400"],
+["محول الوقت – Time-Turner","⌛","قطعة تذكارية مستوحاة من أداة السفر عبر الزمن.","500"],
+["حجر القيامة – Resurrection Stone","💎","قطعة تذكارية مرتبطة بالأقداس الثلاثة.","850"],
+["عباءة الإخفاء الأسطورية","🫥","نسخة تذكارية من أحد الأقداس الثلاثة.","1000"],
+["Elder Wand – العصا الأثرية","🪄","نسخة تذكارية من عصا الأخ الأكبر، أقوى العصي الأسطورية في الحكاية.","1500"],
+
+["حبر سحري","🖋️","حبر للرسائل والملاحظات السحرية.","35"],
+["ريشة كتابة","🪶","ريشة أنيقة للكتابة.","25"],
+["حقيبة موسعة","👜","حقيبة سحرية واسعة لحمل الأدوات.","140"],
+["نظارة سحرية","🥽","إكسسوار تذكاري للرحلات السحرية.","100"],
+["قفازات تنين","🧤","قفازات واقية لمعامل الجرعات.","75"],
+["حبل مسحور","🪢","حبل خيالي يتحرك بأمر صاحبه.","65"],
+["مصباح سحري","🏮","مصباح بإضاءة دافئة.","85"],
+["شطرنج سحري","♟️","نسخة تفاعلية مستوحاة من الشطرنج السحري.","160"],
+["صندوق أسرار","📦","صندوق لحفظ الرسائل والأغراض.","100"],
+["بوصلة سحرية","🧭","بوصلة خيالية للعثور على الوجهة.","130"],
+["قلادة حماية","📿","إكسسوار سحري تذكاري.","125"]
+];
+const cats=["الكل","العصي","الجرعات","الكتب","المخلوقات","الملابس","الأدوات","النوادر"];
+let category="الكل", cart=[];
+function catOf(p){
+ let n=p[0];
+ if(n.includes("عصا")||n.includes("قلب التنين")||n.includes("ريشة العنقاء")||n.includes("شعر وحيد"))return"العصي";
+ if(n.includes("جرعة")||n.includes("Potion")||n.includes("Serum")||n.includes("Antidote")||n.includes("Blood")||n.includes("Skele-Gro")||n.includes("Draught")||n.includes("Elixir")||n.includes("Veritaserum")||n.includes("Felix")||n.includes("Polyjuice")||n.includes("Wolfsbane")||n.includes("Bezoar")||n.includes("مرجل")||n.includes("مجموعة جرعات"))return"الجرعات";
+ if(n.includes("كتاب")||n.includes("Book")||n.includes("Life and Lies")||n.includes("Arts Outsmarted")||n.includes("Moste")||n.includes("Dream Oracle")||n.includes("Guide to Advanced")||n.includes("Essential Defence")||n.includes("A History")||n.includes("Fantastic")||n.includes("Standard")||n.includes("Advanced")||n.includes("One Thousand")||n.includes("Dark Forces")||n.includes("Curses")||n.includes("Monster Book")||n.includes("Quidditch")||n.includes("Tales"))return"الكتب";
+ if(n.includes("مكنسة"))return"الطيران";
+ if(["بومة","Pygmy","Niffler","Bowtruckle","Pixie","Fwooper","Diricawl","Mooncalf","Thestral","Hippogriff","Phoenix","Basilisk","Acromantula","Merpeople","Centaur","House-Elf","Goblin","Dragon","Fluffy","Aragog","Grawp","Buckbeak","Fang","Crookshanks","Trevor","Scabbers","Occamy","Demiguise","Erumpent","Graphorn","Swooping","Murtlap","Leprechaun","Kelpie","Salamander"].some(x=>n.includes(x)))return"المخلوقات";
+ if(["رداء","عباءة","قلادة","قبعة","نظارة","قفازات"].some(x=>n.includes(x)))return"الملابس";
+ if(["حجر الفيلسوف","مرآة إيريسيد","مذكرات توم","خاتم مارفولو","قلادة سالازار","كأس هيلجا","سيف جريفندور","دياديم","الخزنة","حجرة الأسرار","خريطة اللصوص","محول الوقت","حجر القيامة","Elder Wand"].some(x=>n.includes(x)))return"النوادر";
+ return"الأدوات"
+}
+
+const houses={
+"جريفندور":{emoji:"🦁",colors:"الأحمر والذهبي",desc:"الشجاعة والإقدام"},
+"سليذرين":{emoji:"🐍",colors:"الأخضر والفضي",desc:"الطموح والدهاء"},
+"رافنكلو":{emoji:"🦅",colors:"الأزرق والبرونزي",desc:"الذكاء وحب المعرفة"},
+"هافلباف":{emoji:"🦡",colors:"الأصفر والأسود",desc:"الوفاء والاجتهاد"}
+};
+let account=JSON.parse(localStorage.getItem("wizardAccount")||"null");
+let purchased=JSON.parse(localStorage.getItem("wizardPurchased")||"[]");
+let loggedIn=localStorage.getItem("wizardLoggedIn")==="1";
+let couponCode="";
+const STARTING_BALANCE=4000;
+let puzzleCoins=Number(localStorage.getItem("wizardPuzzleCoins")||0);
+let sudokuSolved=Number(localStorage.getItem("wizardSudokuSolved")||0);
+const puzzleQuestions=[{q:'أملك نصف دمبلدور تقريبًا من ذاكرته، وكنت سببًا في اكتشاف سر مهم عن فولدمورت. من أنا؟',a:'سلاغهورن',reward:180},{q:'أرتدي قبعة، وأقرر مصير الطلاب الأربعة، لكنني لست أستاذًا. من أنا؟',a:'قبعة الفرز',reward:120},{q:'أحمل اسمًا عائليًا شهيرًا، وأخشى أن يكتشف أحدهم أنني كنت في منزل مختلف عن عائلتي. من أنا؟',a:'سيريوس بلاك',reward:200},{q:'كنت أعيش في قفص داخل غرفة، وامتلكت موهبة تقليد الأصوات. من أنا؟',a:'بيتر بيتيجرو',reward:220},{q:'أملك مرآة تُظهر ما يتمناه القلب، لكنني لست المرآة نفسها. من أنا؟',a:'إيريسيد',reward:160},{q:'كنت أستاذ الدفاع، لكن اسمي الحقيقي أخطر من المنصب الذي شغلته. من أنا؟',a:'بارتي كراوتش الابن',reward:240},{q:'أملك عينًا سحرية، وأراقب كل شيء تقريبًا، لكنني لست دمبلدور. من أنا؟',a:'ماد آي مودي',reward:180},{q:'أعيش في الغابة، وأعرف لغة النجوم، وأراني بين البشر أحيانًا. من أنا؟',a:'سنتور',reward:140},{q:'كنت أستاذًا محبوبًا، لكنني لم أكن بشريًا بالكامل. من أنا؟',a:'ريموس لوبين',reward:170},{q:'أملك متجرًا في زقاق دياجون، وأحب الأشياء الغريبة، من أنا؟',a:'فريد وجورج',reward:160},{q:'أنا أصغر إخوة ويزلي في البداية، لكنني أصبحت ساحرًا مشهورًا. من أنا؟',a:'رون ويزلي',reward:130},{q:'أستطيع التحول إلى قطة، وأدرّس التجلي، من أنا؟',a:'مينيرفا ماكغوناغال',reward:150},{q:'أملك شعرًا أحمر، لكنني لست ويزلي، وكنت صديقة هيرميون. من أنا؟',a:'ليلي بوتر',reward:190},{q:'كنت حارسًا لمفتاح مهم، وكنت أحب التنانين، من أنا؟',a:'هاجريد',reward:130},{q:'أحرس بابًا، لكنني لست حارسًا بشريًا، ولي ثلاثة رؤوس. من أنا؟',a:'فلافّي',reward:140},{q:'أملك غرفة مليئة بالأشباح، لكنني لست شبحًا. من أنا؟',a:'البارون الدموي',reward:200},{q:'كنت شبحًا، وأكره أن يلاحظ الناس أنني بلا رأس كامل. من أنا؟',a:'نيك شبه مقطوع الرأس',reward:160},{q:'أعيش في حمام البنات وأبكي كثيرًا، من أنا؟',a:'مِرتل الناقمة',reward:140},{q:'أملك غرفة سرية تحت القلعة، وورثت اسم مؤسسها. من أنا؟',a:'سليذرين',reward:180},{q:'كنت أعيش داخل يوميات، لكنني لم أكن مجرد ذكرى. من أنا؟',a:'توم ريدل',reward:220},{q:'أملك ثعبانًا عملاقًا، وفتحت غرفة الأسرار، من أنا؟',a:'توم ريدل',reward:220},{q:'كنت أبحث عن حجر يجعلني خالدًا، من أنا؟',a:'نيكولاس فلاميل',reward:180},{q:'أملك ثلاثة أقداس، لكنني لم أصنعها كلها. من أنا؟',a:'الأخ الأكبر في حكاية الأقداس',reward:200},{q:'أحمل عصا من البلسان، لكنني لم أكن أول من امتلكها. من أنا؟',a:'دمبلدور',reward:190},{q:'أمتلك وشاحًا، وأستطيع تغيير شكلي، وكنت أعيش في الحرب الأولى. من أنا؟',a:'نيمفادورا تونكس',reward:180},{q:'أكره اسم عائلتي، وأصبحت من أتباع فولدمورت ثم ندمت. من أنا؟',a:'دراكو مالفوي',reward:180},{q:'كنت أعمل في وزارة السحر، وكنت والدًا لشخص خطير. من أنا؟',a:'بارتي كراوتش الأب',reward:220},{q:'أعيش مع عائلة غير سحرية، لكنني ساحرة موهوبة جدًا. من أنا؟',a:'هيرميون جرانجر',reward:130},{q:'كنت أملك فأرًا، لكن الفأر لم يكن فأرًا حقًا. من أنا؟',a:'رون ويزلي',reward:150},{q:'كنت أختبئ في هيئة فأر لسنوات. من أنا؟',a:'بيتر بيتيجرو',reward:220},{q:'أملك قطًا ذكيًا اسمه كروكشانك، وكنت أستعين بالكتب في كل شيء. من أنا؟',a:'هيرميون جرانجر',reward:150},{q:'كنت مديرًا لهوجورتس قبل دمبلدور، وظهر اسمي في تاريخ المدرسة. من أنا؟',a:'أرمندو ديبيت',reward:250},{q:'أعيش في البحيرة، ولدي شعب خاص بي. من أنا؟',a:'حورية البحر',reward:140},{q:'كنت أستاذ تاريخ السحر، وأستمر في التدريس حتى بعد موتي. من أنا؟',a:'كتبرت بينز',reward:200},{q:'أملك موهبة التنبؤ، لكنني أبدو غريبة جدًا للطلاب. من أنا؟',a:'سيبيل تريلاوني',reward:150},{q:'قلت نبوءة غيّرت حياة هاري، من أنا؟',a:'سيبيل تريلاوني',reward:180},{q:'أملك عينًا تستطيع رؤية ما لا يراه الآخرون، من أنا؟',a:'ماد آي مودي',reward:170},{q:'كتبت كتبًا عن المخلوقات السحرية، ورحلت حول العالم لدراستها. من أنا؟',a:'نيوت سكاماندر',reward:220},{q:'كنت أستاذًا للجرعات، وأعرف سرًا عن والدة هاري. من أنا؟',a:'سيفيروس سناب',reward:180},{q:'صنعت ذكريات مزيفة لأحمي شخصًا آخر، من أنا؟',a:'هوراس سلاغهورن',reward:210},{q:'كنت أعيش في بيت عائلة بلاك، ثم أصبحت حليفًا لهاري. من أنا؟',a:'سيريوس بلاك',reward:180},{q:'أستطيع التحول إلى كلب أسود، من أنا؟',a:'سيريوس بلاك',reward:190},{q:'أستطيع التحول إلى جرذ، من أنا؟',a:'بيتر بيتيجرو',reward:190},{q:'أستطيع التحول إلى خنفساء لأجمع الأخبار، من أنا؟',a:'ريتا سكيتر',reward:220},{q:'أكتب الأخبار، لكنني لا ألتزم دائمًا بالحقيقة. من أنا؟',a:'ريتا سكيتر',reward:180},{q:'أملك جريدة السحرة الأشهر، لكنني أحب الإثارة. من أنا؟',a:'ديلي برافِت',reward:120},{q:'أعمل في البنك، وأتقن الأعمال المعدنية والسحرية. من أنا؟',a:'عفريت',reward:120},{q:'أملك سيفًا يظهر عند الحاجة، لكنني لست جريفندور نفسه. من أنا؟',a:'جودريك جريفندور',reward:190},{q:'أملك دياديمًا مفقودًا، من أنا؟',a:'روينا رافنكلو',reward:180},{q:'أملك كأسًا أصبحت من الهوركروكسات، من أنا؟',a:'هيلجا هافلباف',reward:190},{q:'أملك قلادة أصبحت هوركروكسًا، من أنا؟',a:'سالازار سليذرين',reward:190},{q:'أملك خاتمًا عائليًا أصبح هوركروكسًا، من أنا؟',a:'مارفولو غاونت',reward:190},{q:'كنت أول شخص في القصة يكتشف أن هاري ساحر، من أنا؟',a:'هاجريد',reward:130},{q:'أرسلت هاري إلى هوجورتس برسالة، لكنني لم أكن بومة. من أنا؟',a:'رسالة هوجورتس',reward:120},{q:'أملك خريطة تكشف تحركات الناس داخل القلعة، من أنا؟',a:'خريطة اللصوص',reward:180},{q:'أقول عبارة تفتح خريطة اللصوص، من أنا؟',a:'خريطة اللصوص',reward:180},{q:'أملك عباءة تجعلني غير مرئي، من أنا؟',a:'عباءة الإخفاء',reward:170},{q:'أملك حجرًا يعيد استدعاء ظلال الموتى، من أنا؟',a:'حجر القيامة',reward:200},{q:'أملك محولًا للزمن، من أنا؟',a:'هيرميون جرانجر',reward:180},{q:'أملك عصا الأخ الأكبر في نهاية القصة، من أنا؟',a:'هاري بوتر',reward:220},{q:'أملك ندبة، لكنها ليست مجرد ندبة. من أنا؟',a:'هاري بوتر',reward:120},{q:'أستطيع التحدث مع الثعابين، من أنا؟',a:'هاري بوتر',reward:150},{q:'كنت والد هاري، وعُرفت بصداقتي مع سيريوس ولوبين وبيتيجرو. من أنا؟',a:'جيمس بوتر',reward:180},{q:'أحب الكويدتش، لكنني لست هاري، من أنا؟',a:'أوليفر وود',reward:150},{q:'كنت حارس مرمى جريفندور، من أنا؟',a:'أوليفر وود',reward:140},{q:'كنت أصغر لاعب في فريق جريفندور في البداية، من أنا؟',a:'هاري بوتر',reward:120},{q:'أرتدي نظارة مستديرة، من أنا؟',a:'هاري بوتر',reward:100},{q:'أملك شعرًا أحمر وأحب الطيران، من أنا؟',a:'رون ويزلي',reward:120},{q:'كنت أعيش في علية بيت ويزلي، وكنت أسبب الفوضى أحيانًا. من أنا؟',a:'غول منزل ويزلي',reward:250},{q:'أملك سيارة تستطيع الطيران، من أنا؟',a:'آرثر ويزلي',reward:150},{q:'أعمل في الوزارة وأحب كل ما يتعلق بالموغّل، من أنا؟',a:'آرثر ويزلي',reward:150},{q:'أملك مجموعة من التوأم المشاغبين، من أنا؟',a:'مولي ويزلي',reward:140},{q:'كنت أعمل في متجر نكت، من أنا؟',a:'فريد ويزلي',reward:140},{q:'كنت أعمل في متجر نكت، من أنا؟',a:'جورج ويزلي',reward:140},{q:'أحب الشطرنج، لكنني لا أملك قطعًا عادية. من أنا؟',a:'رون ويزلي',reward:150},{q:'كنت أفضل صديقة هاري، وأحب الكتب جدًا. من أنا؟',a:'هيرميون جرانجر',reward:110},{q:'كنت أملك عصا من الكرمة وقلب تنين، من أنا؟',a:'هيرميون جرانجر',reward:180},{q:'كنت أملك عصا من الزعرور وشعر وحيد القرن، من أنا؟',a:'دراكو مالفوي',reward:190},{q:'كنت أملك عصا من الطقسوس وريشة عنقاء، من أنا؟',a:'فولدمورت',reward:210},{q:'كنت أملك عصا من الهولي وريشة عنقاء، من أنا؟',a:'هاري بوتر',reward:180},{q:'كنت أملك عصا من البلسان وشعرة ذيل ثيسترال، من أنا؟',a:'دمبلدور',reward:220},{q:'كنت أملك عصا سوداء طويلة، وأدرّس الدفاع والجرعات، من أنا؟',a:'سيفيروس سناب',reward:190},{q:'أرتدي رداءً أخضر وفضيًا، لكنني لست أفعى، من أنا؟',a:'سليذرين',reward:120},{q:'أحب المعرفة وأرتدي ألوانًا زرقاء وبرونزية، من أنا؟',a:'رافنكلو',reward:120},{q:'أحب الوفاء والاجتهاد وأرتدي الأصفر والأسود، من أنا؟',a:'هافلباف',reward:120},{q:'أحب الشجاعة وأرتدي الأحمر والذهبي، من أنا؟',a:'جريفندور',reward:120},{q:'أستطيع رؤية الثيسترال، لكن ليس كل الناس يستطيعون. من أنا؟',a:'هاري بوتر',reward:170},{q:'أربي تنينًا سريًا في برج القلعة، من أنا؟',a:'هاجريد',reward:180},{q:'كنت أملك تنينًا اسمه نوربرت، من أنا؟',a:'هاجريد',reward:180},{q:'أملك هيبوجريفًا اسمه باكبيك، من أنا؟',a:'هاجريد',reward:160},{q:'أعيش مع هاري وأحمل الرسائل، من أنا؟',a:'هيدويج',reward:130},{q:'أعيش في بيت هيرميون وأحب ملاحقة الفئران، من أنا؟',a:'كروكشانك',reward:140},{q:'كنت حارسًا في فريق جريفندور وكنت صديقًا لهاري، من أنا؟',a:'رون ويزلي',reward:120},{q:'أملك موهبة الطيران، لكنني أخاف من العناكب. من أنا؟',a:'رون ويزلي',reward:150},{q:'أعيش في الغابة وأحمل سهامًا، من أنا؟',a:'سنتور',reward:130},{q:'أحب مجلة «ذا كويبلر»، وأرتدي أحيانًا أشياء غريبة، من أنا؟',a:'لونا لوفجود',reward:130},{q:'أحب الأشياء الغريبة وأصدق ما لا يصدقه الآخرون، من أنا؟',a:'لونا لوفجود',reward:130},{q:'أملك أذنين كبيرتين وأحب الملابس، من أنا؟',a:'دوبي',reward:140},{q:'كنت قزم منزل، لكنني أصبحت حرًا. من أنا؟',a:'دوبي',reward:150},{q:'أملك كرة زجاجية، لكنني لا ألعب الكويدتش بها. من أنا؟',a:'سيبيل تريلاوني',reward:150}];
+let puzzleIndex=0;
+const coupons={
+"OWL10":{discount:.10, text:"خصم 10%"},
+"DIAGON15":{discount:.15, text:"خصم 15%"},
+"GRINGOTTS20":{discount:.20, text:"خصم 20%"}
+};
+let reviews=JSON.parse(localStorage.getItem("wizardReviews")||"{}");
+const creatureProfiles={
+"Phoenix – عنقاء":"العنقاء طائر سحري نادر يتميز بالتجدد والشفاء، ويستطيع حمل أحمال كبيرة بالنسبة إلى حجمه.",
+"Thestral – ثيسترال":"مخلوق مجنح غامض ذو هيئة حصان، ويظهر في عدة أحداث مهمة من السلسلة.",
+"Hippogriff – هيبوجريف":"مخلوق يجمع بين خصائص النسر والحصان، ويجب احترامه عند الاقتراب منه.",
+"Fluffy – الكلب ذو الرؤوس الثلاثة":"كلب حراسة سحري ذو ثلاثة رؤوس ظهر في الجزء الأول لحراسة مدخل مهم.",
+"Niffler – نيّفلر":"مخلوق صغير يحب الأشياء اللامعة ويمكنه العثور على الكنوز بسهولة.",
+"Bowtruckle – بومتروكل":"مخلوق صغير يشبه غصن الشجرة ويعيش بالقرب من الأشجار.",
+"Fwooper – فوبر":"طائر سحري ملون بصوت مميز، وظهر في مواد السلسلة والمخلوقات.",
+"Diricawl – ديريكاول":"طائر سحري قادر على الاختفاء والظهور في مكان آخر.",
+"Mooncalf – مونكالف":"مخلوق خجول يخرج ليلًا ويرقص أحيانًا في ضوء القمر.",
+"Basilisk – باسيليسك":"ثعبان سحري عملاق وخطير ارتبط بأحداث غرفة الأسرار.",
+"Acromantula – أكرومانتولا":"عنكبوت سحري ضخم وذكي، وأشهره أراجوج.",
+"Centaur – سنتور":"كائن نصفه إنسان ونصفه حصان، ويظهر في الغابة المحرمة.",
+"House-Elf – قزم منزل":"كائن سحري منزلي يتمتع بسحر خاص به.",
+"Dragon – تنين":"مجموعة من سلالات التنين تظهر في أحداث ومهام مختلفة من السلسلة."
+};
+
+const wandCores={
+"عصا الأخ الأكبر – Elder Wand":"شعرة ذيل ثيسترال",
+"عصا هاري – Holly & Phoenix":"ريشة عنقاء",
+"عصا فولدمورت – Yew & Phoenix":"ريشة عنقاء",
+"عصا رون – Ash & Unicorn":"شعر وحيد القرن",
+"عصا هيرميون – Vine & Dragon":"قلب التنين",
+"عصا دراكو – Hawthorn & Unicorn":"شعر وحيد القرن",
+"عصا من خشب البلوط":"شعر وحيد القرن",
+"عصا من خشب الصفصاف":"شعر وحيد القرن",
+"عصا من خشب الجوز":"قلب التنين"
+};
+const potionInfo={
+"جرعة الحظ السائل – Felix Felicis":"الوصفة الرسمية التفصيلية ليست معروضة كاملة في الأفلام؛ تحضيرها في عالم السلسلة يحتاج وقتًا طويلًا وتخميرًا دقيقًا.",
+"جرعة Polyjuice":"تحتاج إلى مكونات متعددة، ومن أشهر عناصرها عينة من الشخص المراد تقليده. تحضيرها يستغرق وقتًا طويلًا في عالم السلسلة.",
+"جرعة النوم الحي – Draught of Living Death":"يرتبط اسمها بمكونات مثل Asphodel وWormwood في درس الجرعات؛ التفاصيل الكاملة للوصفة ترد في الكتب السحرية.",
+"Amortentia – جرعة الحب":"لا توجد وصفة كاملة معروضة في السلسلة؛ أشهر خصائصها أن رائحتها تختلف من شخص لآخر.",
+"جرعة Pepperup":"جرعة مرتبطة بعلاج نزلات البرد واستعادة النشاط؛ الوصفة الكاملة ليست معروضة بالتفصيل في السلسلة.",
+"جرعة Wideye":"جرعة يقظة مرتبطة بمقاومة النوم؛ الوصفة التفصيلية ليست معروضة كاملة في السلسلة."
+};
+function saveAccount(){localStorage.setItem("wizardAccount",JSON.stringify(account))}
+function ensureBalance(){if(account && typeof account.balance!=="number"){account.balance=STARTING_BALANCE;saveAccount()}}
+ensureBalance();
+if(account && localStorage.getItem("balanceMigrated4000")!=="1"){account.balance=4000;saveAccount();localStorage.setItem("balanceMigrated4000","1");}
+
+function showLogin(){
+ document.getElementById("loginPage").classList.add("showPage");
+ document.getElementById("storeApp").style.display="none";
+}
+function enterStore(){
+ const name=document.getElementById("loginName").value.trim();
+ if(!name){document.getElementById("loginError").textContent="اكتبي اسم الساحر الأول ✦";return}
+ const email=document.getElementById("loginEmail").value.trim();
+ const house=document.getElementById("loginHouse").value;
+ account=account||{name,email,house,balance:STARTING_BALANCE};
+ account.name=name; account.email=email;
+ if(house) account.house=house;
+ if(typeof account.balance!=="number") account.balance=STARTING_BALANCE;
+ saveAccount();loggedIn=true;localStorage.setItem("wizardLoggedIn","1");
+ document.getElementById("loginPage").classList.remove("showPage");
+ document.getElementById("storeApp").style.display="";
+ updateAccountUI();updateBalanceUI();
+ showWelcome();
+}
+function showWelcome(){
+ document.getElementById("welcomeText").textContent=`مرحبًا يا ${account.name} ✦ لديك ${account.balance.toLocaleString()} جاليون كبداية.`;
+ document.getElementById("welcomeModal").classList.add("show");
+}
+function closeWelcome(){document.getElementById("welcomeModal").classList.remove("show")}
+function logout(){
+ loggedIn=false;localStorage.removeItem("wizardLoggedIn");
+ document.getElementById("storeApp").style.display="none";
+ showLogin();
+}
+function updateBalanceUI(){
+ if(account) document.getElementById("balanceBtn").textContent=`🪙 ${account.balance.toLocaleString()} جاليون`;
+}
+function openAccount(){
+ document.getElementById("accountModal").classList.add("show");
+ const a=account||{name:"",email:"",house:""};
+ document.getElementById("accountName").value=a.name||"";
+ document.getElementById("accountEmail").value=a.email||"";
+ document.getElementById("houseSelect").value=a.house||"";
+ document.getElementById("accountStatus").innerHTML=account?`<div class="profileMini">${houses[account.house]?.emoji||"🧙"} <b>${account.name}</b> — ${account.house||"لم تختاري منزلًا بعد"}</div>`:"";
+}
+function saveProfile(){
+ const name=document.getElementById("accountName").value.trim();
+ const email=document.getElementById("accountEmail").value.trim();
+ const house=document.getElementById("houseSelect").value;
+ if(!name){alert("اكتبي اسم الساحر أولًا.");return}
+ account={name,email,house,balance:account?.balance ?? STARTING_BALANCE};saveAccount();closeAccount();updateAccountUI();updateBalanceUI();alert("تم إنشاء حساب الساحر ✨");
+}
+function closeAccount(){document.getElementById("accountModal").classList.remove("show")}
+function updateAccountUI(){document.getElementById("accountBtn").textContent=account?`🧙 ${account.name}`:"🧙 حساب الساحر"}
+function openProfile(){
+ if(!account){openAccount();return}
+ document.getElementById("profileBody").innerHTML=`<div class="profileHero"><div class="bigIcon">${houses[account.house]?.emoji||"🧙"}</div><h2>${account.name}</h2><p>المنزل: <b>${account.house||"غير محدد"}</b></p><p>${houses[account.house]?.desc||"اختاري منزلًا لتكملي ملفك السحري."}</p></div><hr><h3>🪙 سجل المشتريات</h3><p>عدد الطلبات: ${purchased.length}</p><p>يمكنك تقييم المنتجات التي اشتريتها من قسم مشترياتي.</p><button class="checkout secondary" onclick="closeProfile();logout()">تسجيل الخروج</button>`;
+ document.getElementById("profileModal").classList.add("show")
+}
+function closeProfile(){document.getElementById("profileModal").classList.remove("show")}
+function showRare(){category="النوادر";renderNav();render()}
+function rateProduct(i){
+ if(!purchased.includes(i)){alert("يمكنك تقييم المنتج بعد شرائه فقط ✦");return}
+ let r=prompt("اكتبي تقييمك من 1 إلى 5 نجوم:");
+ r=Number(r); if(r<1||r>5||!r)return;
+ reviews[i]=r;localStorage.setItem("wizardReviews",JSON.stringify(reviews));render();
+}
+function productStars(i){return reviews[i]?`<div class="stars">★`.repeat(reviews[i])+`</div>`:""}
+
+const potionPrep={
+"جرعة الحظ السائل – Felix Felicis":"تحضير تذكاري داخل عالم السحر: تحتاج وقتًا طويلًا ودقة عالية، وتُعد من الجرعات المعقدة. الموقع يعرضها كمعرفة قصصية وليست وصفة عملية.",
+"Truth Serum – مصل الحقيقة":"في السلسلة يُعرف باسم Veritaserum. طريقة التحضير التفصيلية غير معروضة بالكامل في السلسلة؛ صفحة المنتج تذكر الاستخدام والمكونات المعروفة فقط.",
+"Antidote to Veritaserum":"ترياق سحري تذكاري؛ لا توجد وصفة تحضير كاملة ومثبتة في السلسلة، لذلك نعرضه كمعلومة عالمية بدل اختراع وصفة.",
+"Blood-Replenishing":"جرعة مذكورة في عالم السحر، لكن السلسلة لا تقدم وصفة تحضير كاملة لها؛ لذلك صفحة المنتج تعرض المعلومات المعروفة فقط.",
+"Draught of Peace":"جرعة معقدة جدًا؛ من المعروف أن حجر القمر وشراب الخربق من مكوناتها، وأن ترتيب وكميات المكونات والتحريك مهمان. ",
+"Skele-Gro":"جرعة معروفة في السلسلة، لكن طريقة التحضير التفصيلية ليست معروضة بشكل كامل في المصادر الرسمية.",
+"Polyjuice Potion":"جرعة معقدة جدًا. المكونات المعروفة تشمل جلد البومسلانغ، عشبة العقدة، Fluxweed، ذباب Lacewing، العلق، وقرن Bicorn، مع جزء من الشخص المراد تقليده. الوصفة الكاملة معقدة ومذكورة في Moste Potente Potions. ",
+"Draught of Living Death":"المكونات المعروفة تشمل الأسفوديل مع منقوع الشيح، وجذر الناردين وحبة Sopophorous. تفاصيل التحضير في عالم السلسلة تتضمن مراحل وتحريكًا دقيقًا، لذا يعرض المتجر وصفًا قصصيًا مختصرًا فقط. ",
+"Elixir to Induce Euphoria":"جرعة صفراء تمنح شعورًا قويًا بالسعادة. أضيفت النعناع في نسخة هاري من الوصفة لموازنة بعض الآثار الجانبية. ",
+"Wolfsbane Potion":"جرعة مرتبطة بحالات المستذئبين، وهي من الجرعات المعروفة في المنهج السحري. تفاصيل الوصفة الكاملة غير معروضة في السلسلة."
+};
+function getPotionPrep(name){
+ for(const k of Object.keys(potionPrep)) if(name.includes(k)) return potionPrep[k];
+ return "طريقة التحضير: لا توجد وصفة كاملة موثقة في السلسلة لهذا المنتج؛ لذلك نعرض هنا وصفًا قصصيًا بدل اختراع خطوات غير موجودة في الكانون.";
+}
+
+function potionPreparation(name){
+  const data = {
+    "Felix Felicis": 'في عالم هاري بوتر تُعد من الجرعات شديدة الصعوبة، وتحتاج وقتًا طويلًا جدًا للتحضير. الوصفة الكاملة ليست معروضة بالتفصيل في الأفلام، لذلك نعرضها هنا كمعلومة قصصية فقط.',
+    "Truth Serum": 'يُعرف باسم Veritaserum. السلسلة لا تعرض وصفة كاملة خطوة بخطوة، لذلك هذه الصفحة تشرح وظيفته بدل اختراع وصفة غير موجودة في القصة.',
+    "Polyjuice": 'جرعة معقدة لتغيير الشكل مؤقتًا. من أشهر مكوناتها المذكورة في السلسلة: جلد البومسلانغ، عشبة العقدة، وFluxweed وLacewing flies ومكونات سحرية أخرى. طريقة التحضير الكاملة ليست معروضة هنا كخطوات عملية.',
+    "Draught of Peace": 'جرعة مهدئة مشهورة في عالم السحر. تُذكر لها مكونات سحرية مثل حجر القمر وشراب الخربق، لكن ترتيب التحضير والكميات الدقيقة لا تُعرض هنا كوصفة عملية.',
+    "Living Death": 'جرعة شديدة القوة مرتبطة بنوم عميق. تظهر في السلسلة كمثال على الجرعات المتقدمة، لكن الوصفة الكاملة والتفاصيل الدقيقة ليست معروضة في المتجر.',
+    "Skele-Gro": 'جرعة مرتبطة بإعادة نمو العظام في عالم السحر. طريقة تحضيرها الكاملة ليست موضحة بالتفصيل في السلسلة.',
+    "Wolfsbane": 'جرعة مرتبطة بالمستذئبين وتساعدهم على الاحتفاظ بوعيهم أثناء التحول. تفاصيل الوصفة الكاملة غير معروضة في السلسلة.'
+  };
+  for(const key of Object.keys(data)){
+    if(name.includes(key)) return data[key];
+  }
+  return "طريقة التحضير: لا توجد وصفة كاملة موثقة في السلسلة لهذا المنتج، لذلك نعرض وصفًا قصصيًا مختصرًا بدل اختراع تفاصيل غير موجودة.";
+}
+function details(i){
+ const p=products[i];
+ let extra=`<div class="detail"><b>✨ التفاصيل:</b><br>${p[2]}</div>`;
+ if(wandCores[p[0]])extra=`<div class="detail"><b>🧬 النواة:</b> ${wandCores[p[0]]}<br><b>🌳 الخشب:</b> ${p[0].includes("Elder")?"البلسان":p[0].replace("عصا ","").split(" – ")[0]}</div>`;
+ if(potionInfo[p[0]])extra=`<div class="detail"><b>⚗️ المكونات وطريقة التحضير:</b><br>${potionInfo[p[0]]}</div>`;
+ if(creatureProfiles[p[0]])extra=`<div class="detail"><b>🐾 ملف المخلوق:</b><br>${creatureProfiles[p[0]]}</div>`;
+ if(catOf(p)==="النوادر")extra=`<div class="detail"><b>🏛️ ركن النوادر:</b><br>${p[2]}<br><small>قطعة تذكارية خيالية داخل هذا المتجر.</small></div>`;
+ document.getElementById("detailBody").innerHTML=`<div class="bigIcon">${p[1]}</div><h2>${p[0]}</h2>${extra}<div class="price">${p[3]} 🪙 جاليون</div><div class="ratingLine">${productStars(i)||"☆ ☆ ☆ ☆ ☆"} <button class="smallBtn" onclick="rateProduct(${i})">تقييم بعد الشراء</button></div><button class="add" onclick="addToCart(${i});closeDetails()">🛒 أضيفي للعربة</button>`;
+ document.getElementById("detailModal").classList.add("show");
+}
+function renderNav(){nav.innerHTML=cats.map(c=>`<button class="${c===category?'active':''}" onclick="category='${c}';renderNav();render()">${c}</button>`).join("")}
+function render(){
+ let q=search.value.trim().toLowerCase();
+ let arr=products.filter(p=>catOf(p)!=="الطيران" && (category==="الكل"||catOf(p)===category)&&(!q||p[0].toLowerCase().includes(q)||p[2].toLowerCase().includes(q)));
+ title.textContent=category==="الكل"?"كل المنتجات":category;
+ count.textContent=arr.length+" منتج";
+ grid.innerHTML=arr.map((p,i)=>`<article class="card"><div class="icon">${p[1]}</div><h3>${p[0]}</h3><div class="desc">${p[2]}</div><div class="price">${p[3]} 🪙 جاليون</div><div class="cardActions"><button class="add" onclick="addToCart(${products.indexOf(p)})">🛒 أضيفي للعربة</button><button class="detailsBtn" onclick="details(${products.indexOf(p)})">التفاصيل</button></div></article>`).join("");
+}
+function addToCart(i){
+ if(!loggedIn){showLogin();return}
+ if(!products[i])return;
+ cart.push(i);
+ cartCount.textContent=cart.length;
+ showToast(`تمت إضافة «${products[i][0]}» للعربة 🛒`);
+}
+function add(i){addToCart(i)}
+function showToast(text){
+ const t=document.getElementById("toast");
+ t.textContent=text;t.classList.add("show");
+ clearTimeout(window.toastTimer);
+ window.toastTimer=setTimeout(()=>t.classList.remove("show"),2200);
+}
+function applyCoupon(){
+ const input=document.getElementById("couponInput").value.trim().toUpperCase();
+ if(coupons[input]){couponCode=input;document.getElementById("couponMsg").textContent=`تم تطبيق ${coupons[input].text} ✦`;openCart();}
+ else {couponCode="";document.getElementById("couponMsg").textContent="الكوبون غير صالح.";openCart();}
+}
+function cartTotals(){
+ const subtotal=cart.reduce((s,i)=>s+Number(products[i][3]),0);
+ const discount=couponCode?subtotal*coupons[couponCode].discount:0;
+ return {subtotal,discount,total:subtotal-discount};
+}
+function buyCart(){
+ if(!cart.length){alert("السلة فارغة.");return}
+ if(!account||!loggedIn){closeCart();showLogin();return}
+ ensureBalance();
+ const t=cartTotals();
+ if(t.total>account.balance){alert(`رصيدك ${account.balance} جاليون فقط، والطلب يحتاج ${t.total} جاليون.`);return}
+ const ok=confirm(`الإجمالي بعد الخصم: ${t.total} جاليون 🪙\nرصيدك بعد الشراء: ${account.balance-t.total} جاليون\nتأكيد الدفع؟`);
+ if(!ok)return;
+ account.balance-=t.total;saveAccount();
+ purchased=[...new Set([...purchased,...cart])];
+ localStorage.setItem("wizardPurchased",JSON.stringify(purchased));
+ cart=[];couponCode="";cartCount.textContent=0;updateBalanceUI();
+ closeCart();alert("تم الدفع بالجاليون بنجاح! 🦉\nاستخدميه بحكمة!");
+}
+
+function removeFromCart(i){
+ const pos=cart.indexOf(i);
+ if(pos===-1)return;
+ cart.splice(pos,1);
+ cartCount.textContent=cart.length;
+ openCart();
+ showToast("تمت إزالة المنتج من العربة ✦");
+}
+function addPuzzleCoins(n){
+ puzzleCoins+=n;
+ localStorage.setItem("wizardPuzzleCoins",puzzleCoins);
+ if(account){account.balance+=n;saveAccount();updateBalanceUI();}
+}
+function openGames(){document.getElementById("gamesModal").classList.add("show");renderGame();}
+function closeGames(){document.getElementById("gamesModal").classList.remove("show")}
+function renderGame(){
+ const q=puzzleQuestions[puzzleIndex%puzzleQuestions.length];
+ document.getElementById("gameBody").innerHTML=`
+ <div class="gameTabs"><button onclick="showWhoAmI()">🕵️ من أنا؟</button></div>
+ <div id="gameContent"><div class="difficulty">🔥 مستوى صعب جدًا — السؤال ${(puzzleIndex%100)+1} من 100</div><h3>🕵️ لغز من أنا؟</h3><p>${q.q}</p><input id="riddleAnswer" class="formInput" placeholder="اكتبي الإجابة"><button class="checkout" onclick="solveRiddle()">حل اللغز ✦</button><p class="gameReward">الجائزة: ${q.reward} جاليون</p></div>`;
+}
+function showWhoAmI(){renderGame()}
+function solveRiddle(){
+ const q=puzzleQuestions[puzzleIndex%puzzleQuestions.length];
+ const a=document.getElementById("riddleAnswer").value.trim().toLowerCase();
+ if(a && (a===q.a.toLowerCase() || a.includes(q.a.toLowerCase()))){
+   addPuzzleCoins(q.reward); puzzleIndex++; showToast(`صح! كسبتِ ${q.reward} جاليون 🪙`); renderGame();
+ }else alert("إجابة غير صحيحة، حاولي مرة أخرى ✦");
+}
+
+function openCart(){
+ modal.classList.add("show");
+ let counts={};cart.forEach(i=>counts[i]=(counts[i]||0)+1);
+ let t=cartTotals();
+ cartItems.innerHTML=cart.length?Object.entries(counts).map(([i,n])=>{let p=products[i];return `<div class="cartItem"><span>${p[1]} ${p[0]} × ${n}</span><span><b>${+p[3]*n} 🪙</b> <button class="removeItem" onclick="removeFromCart(${i})">×</button></span></div>`}).join(""):`<div class="empty">السلة فاضية... اختاري أدواتك السحرية ✨</div>`;
+ total.innerHTML=`<div class="couponBox"><input id="couponInput" class="formInput" placeholder="كود الخصم"><button class="smallBtn" onclick="applyCoupon()">تطبيق</button><div id="couponMsg">${couponCode?(coupons[couponCode]?.text||""):"الكوبون المتاحة: OWL10 / DIAGON15 / GRINGOTTS20"}</div></div><p>المجموع: ${t.subtotal} 🪙</p><p>الخصم: ${t.discount} 🪙</p><h3>الإجمالي: ${t.total} 🪙 جاليون</h3>`;
+}
+function closeCart(){
+ const el=document.getElementById("modal");
+ if(el) el.classList.remove("show");
+}
+function closeAnyModal(id){
+ const el=document.getElementById(id);
+ if(el) el.classList.remove("show");
+}
+renderNav();render();updateAccountUI();updateBalanceUI();document.getElementById("cartCount").textContent=cart.length;if(!loggedIn)showLogin();
+</script>
+</div>
+<div id="toast" class="toast"></div>
+<script>
+document.addEventListener("click", function(e){
+  const close=e.target.closest(".close");
+  if(close){
+    const modal=close.closest(".modal");
+    if(modal) modal.classList.remove("show");
+  }
+  if(e.target.classList.contains("modal")) e.target.classList.remove("show");
+});
+window.addEventListener("keydown", function(e){
+  if(e.key==="Escape"){
+    document.querySelectorAll(".modal.show").forEach(m=>m.classList.remove("show"));
+  }
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+  const login = document.querySelector("#loginModal, .loginModal, [id*="login"]");
+  if(login && !document.getElementById("quickStoreBtn")){
+    const b=document.createElement("button");
+    b.id="quickStoreBtn"; b.type="button";
+    b.textContent="🪄 دخول سريع للمتجر";
+    b.style.cssText="margin-top:10px;width:100%;padding:12px;border-radius:12px;border:1px solid #80683e;background:#241b31;color:#f7e8c8;font-weight:700;cursor:pointer";
+    b.onclick=function(){
+      try{
+        if(typeof loggedIn!=="undefined") loggedIn=true;
+        if(typeof account!=="undefined" && !account){
+          account={name:"ساحرة جديدة",house:"هافلباف",balance:4000};
+          if(typeof saveAccount==="function") saveAccount();
+        }
+        if(typeof showLogin==="function") showLogin();
+        else login.classList.remove("show");
+        if(typeof render==="function") render();
+        if(typeof updateAccountUI==="function") updateAccountUI();
+        if(typeof updateBalanceUI==="function") updateBalanceUI();
+      }catch(e){ login.classList.remove("show"); }
+    };
+    login.querySelector(".box, form, .modal-content")?.appendChild(b);
+  }
+});
+</script>
+</body>
+</html>
